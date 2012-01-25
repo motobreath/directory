@@ -1,0 +1,103 @@
+.ui-content{
+    color:#2F3E46;
+    margin-top:1em;
+    line-height:17pt;
+}
+
+.ui-content h1, h2, h3{
+    font-size:14pt;
+    padding:5px 0;
+    margin:0;
+}
+
+.ui-content h4, h5, h6{
+    font-size:12pt;
+    padding:5px 0;
+    margin:0;
+}
+
+.ui-content ul{
+    margin:8px 0;
+}
+
+.innerContentItem{
+    background-color:#fff;
+    padding:10px 12px;
+    margin-bottom:1em;
+}
+.innerContentItem.ui-corner-all{
+
+}
+
+.ui-header{
+    height:40px;
+    background-image: url(/images/mobile/logo.png);
+    background-position:50% 50%;
+    background-repeat: no-repeat;
+}
+
+.ui-footer{
+    height:50px;
+     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.5);
+
+}
+.ui-footer a{
+    width:33%;
+    height:22px;
+    padding-top:28px;
+    float:left;
+    background-repeat: no-repeat;
+    background-position:50% -3px;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    font-size:10pt;
+    text-decoration:none;
+    text-shadow: 0 1px 1px #000000;
+    text-align: center;
+}
+
+
+.ui-footer .ui-controlgroup{
+    margin:0;
+    background-image:url(/images/mobile/borderpx.png);
+    background-repeat: repeat-y;
+    background-position: 50%;
+}
+
+/*
+//Pay attention! the images for the iphone and any other high res screen
+must be double the pixels. so here, we would put a copy of regular images
+for other phones, using same images for now to avoid duplicates during dev*/
+.ui-footer a.people {
+     background-image: url(/images/mobile/peopleFtrIcon.png);
+     width:32.5%;
+     border-right:1px solid #456f9a;
+
+}
+.ui-footer a.departments {
+     background-image: url(/images/mobile/departmentsFtrIcon.png);
+     width:32.5%;
+     border-right:1px solid #456f9a;
+}
+.ui-footer a.help {
+     background-image: url(/images/mobile/helpFtrIcon.png);
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-footer a.people {
+         background-image: url(/images/mobile/peopleFtrIcon-retna.png);
+         background-size:40px 40px;
+    }
+    .ui-footer a.departments {
+        background-image: url(/images/mobile/departmentsFtrIcon-retna.png);
+        background-size:40px 40px;
+    }
+    .ui-footer a.help {
+        background-image: url(/images/mobile/helpFtrIcon-retna.png);
+        background-size:40px 40px;
+    }
+    .ui-header{
+        background-image: url(/images/mobile/logo-retna.png);
+        background-size:179px 30px;
+    }
+}
