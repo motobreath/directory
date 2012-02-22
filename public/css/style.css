@@ -202,6 +202,8 @@ table { border-collapse: collapse; border-spacing: 0; }
    ========================================================================== */
 body{
     background-image:url(/images/bg.gif);
+    background-repeat: repeat-x;
+    background-color: #ADD4FA;
     font-family:verdana,arial,helvetica,sans-serif;
     font-size:9pt;
 }
@@ -295,6 +297,14 @@ header nav a.active{
     padding:0;
 }
 
+h4,h5,h6{
+    color:#666666;
+    font-size:12pt;
+    margin:0;
+    padding:0;
+    padding:5px 0;
+}
+
 #main h1{
     background-image:url(/images/h1_bg.gif);
     background-repeat:no-repeat;
@@ -319,6 +329,7 @@ header nav a.active{
     background: url("/images/sidebar_bg.jpg") no-repeat scroll left top transparent;
     line-height: 14pt;
     color: #AAAAAA;
+    min-height: 270px;
 }
 
 #main aside h3{
@@ -346,6 +357,208 @@ footer{
     font-size:8pt;
 }
 
+#searchResults{
+    float:left;
+    width:680px;
+}
+
+ul.searchResults, ul.searchResults li{
+    margin:0; padding:0;
+    list-style:none;
+}
+
+ul.searchResults li{
+    padding:10px;
+    margin-bottom: 10px;
+    line-height: 16pt;
+    font-size:8pt;
+    overflow:hidden;
+}
+
+ul.searchResults li div.left, ul.searchResults li div.right{
+    float:left;
+}
+
+ul.searchResults li div.left{
+    width:352px;
+    padding-right:30px;
+    text-transform: capitalize;
+}
+
+ul.searchResults li div.left a.name{
+    font-size:12pt;
+    font-weight:bold;
+    background-image:url(/images/icons.png);
+    background-repeat:no-repeat;
+    background-position: 100% -109px;
+    padding-right:22px;
+    color:#003366;
+}
+
+ul.searchResults li div.right{
+    width:220px;
+    font-size:9pt;
+    line-height: 20pt;
+}
+
+span.email,span.phone,span.fax,span.mobile,span.location,span.url{
+    background-image:url(/images/icons.png);
+    background-repeat:no-repeat;
+    padding-left:22px;
+    display: inline-block;
+}
+
+span.email{
+    background-position: 0 -21px;
+
+}
+span.phone{
+    background-position: 0 -78px;
+    width: 55px;
+}
+span.fax{
+    background-position: 0 6px;
+    width: 55px;
+}
+span.mobile{
+    background-position: 0 -48px;
+    width: 55px;
+}
+
+span.location{
+    background-position: 0 -138px;
+    width: 55px;
+}
+span.url{
+    background-position: 0 -166px;
+}
+
+ul.searchResults li.alt{
+    background-color:#EEEEEE;
+}
+
+.errorDiv{
+    padding:10px 0;
+    clear:both;
+    color:#ff0000;
+}
+
+.error{
+    color:#ff0000;
+}
+
+section.details{
+    line-height:20pt;
+}
+
+section.details span.email, section.details span.email, section.details span.phone, section.details span.fax,span.mobile, section.details span.location{
+    width:75px;
+}
+
+section.details span.detail{
+    font-weight: bold;
+}
+
+section.details .download{
+    clear:both;
+    padding-top:10px;
+    overflow:hidden;
+    line-height:30px;
+}
+
+section.details .download a, section.details .download span{
+    float:left;
+}
+
+section.details .download span{
+    margin-top:-5px;
+}
+
+section.details .download br{
+    clear:left;
+}
+
+section.details .download a.vcard, section.details .download a.sms{
+    width:70px;
+    height:20px;
+    background-image:url(/images/largeIcons.png);
+    background-repeat:no-repeat;
+    display:block;
+    margin-right:5px;
+}
+
+section.details .download a.vcard{
+    background-position: 0 0;
+}
+section.details .download a.sms{
+    background-position: 0 -20px;
+}
+
+#resultsContacts{
+    clear:both;
+    padding-top:8px;
+}
+
+.disclaimer{
+    padding-top:10px;
+}
+
+#smsForm{
+    margin-bottom:10px;
+    overflow:hidden;
+    background-color:#EEEEEE;
+    padding:10px;
+    line-height: 15pt;
+}
+
+#smsForm label{
+    color:#000;
+}
+
+#smsForm div{
+    clear:both;
+}
+
+#smsForm label{
+    width:165px;
+    display:block;
+    float:left;
+}
+
+#smsForm input, #smsform select{
+    width:162px;
+}
+
+#smsForm p.hint{
+    margin:-10px 0 10px;
+    padding:0;
+}
+
+#smsForm input.submit{
+    font-weight:bold;
+    padding:3px 8px;
+    width:100px;
+    margin:10px auto 0;
+    float:none;
+    display:block;
+    clear:both;
+}
+
+#smsForm ul.errors, #smsForm ul.errors li{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.errors{
+    color:#ff0000;
+}
+
+p.deptDesc{
+    height:50px;
+    text-overflow:ellipsis;
+    line-height: normal;
+}
 
 /* =============================================================================
     Form Styles

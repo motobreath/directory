@@ -1,7 +1,8 @@
 .ui-content{
     color:#2F3E46;
-    margin-top:1em;
+    margin-top:35px;
     line-height:17pt;
+    margin-bottom:60px;
 }
 
 .ui-content h1, h2, h3{
@@ -34,11 +35,21 @@
     background-image: url(/images/mobile/logo.png);
     background-position:50% 50%;
     background-repeat: no-repeat;
+    position:fixed !important;
+    top:0;
+    left:0;
+    z-index: 1000
 }
 
 .ui-footer{
     height:50px;
-     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.5);
+    text-align:center;
+    width:100%;
+    position:fixed !important;
+    bottom:0;
+    left:0;
+    z-index: 1000;
 
 }
 .ui-footer a{
@@ -83,6 +94,33 @@ for other phones, using same images for now to avoid duplicates during dev*/
      background-image: url(/images/mobile/helpFtrIcon.png);
 }
 
+#searchForm{
+    padding-top:10px;
+}
+
+#searchForm label{
+ display: block;
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 19px 0 0.3em;
+    width:100px;
+}
+
+div.ui-select{
+    width:300px;
+}
+
+#searchForm input{
+    margin-top:20px;
+    width:175px !important;
+}
+
+#searchForm div.submit{
+    margin-top:30px;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
     .ui-footer a.people {
          background-image: url(/images/mobile/peopleFtrIcon-retna.png);
@@ -100,4 +138,16 @@ for other phones, using same images for now to avoid duplicates during dev*/
         background-image: url(/images/mobile/logo-retna.png);
         background-size:179px 30px;
     }
+}
+
+.errorDiv{
+    padding-top:10px;
+    clear:both;
+    color:#ff0000;
+}
+
+#leaveMobile{
+    clear:both;
+    padding-top:40px;
+    text-align:center;
 }

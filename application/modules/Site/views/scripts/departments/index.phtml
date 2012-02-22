@@ -1,0 +1,12 @@
+<article>
+    <?php echo $this->displayErrors() ?>
+    <h1>Departments</h1>
+    <?php echo $this->form?>
+    <ul class="searchResults">
+        <?php echo $this->partialLoop()->setObjectKey('dept')
+                ->partialLoop("partials/DeptSearchListing.phtml",$this->departments) ?>
+    </ul>
+    <?php echo $this->getDisclaimer()?>
+</article>
+
+<?php echo $this->partial("partials/SideDepartments.phtml"); ?>

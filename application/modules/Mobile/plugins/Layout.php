@@ -10,7 +10,7 @@ class Mobile_Plugin_Layout
 {
     public function dispatchLoopStartup(Zend_Controller_Request_Abstract $request)
     {
-        if ('Mobile' != $request->getModuleName()) {
+        if ('mobile' != strtolower($request->getModuleName())) {
             // If not in this module, return early
             return;
         }

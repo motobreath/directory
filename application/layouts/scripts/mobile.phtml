@@ -5,7 +5,7 @@
         <title>Mobile Template</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
         <link rel="stylesheet" href="/css/mobile.css" />
@@ -27,9 +27,9 @@
                 <?php echo $this->layout()->content; ?>
             </div>
 
-            <div data-role="footer" data-theme="b" data-id="appFtr" data-position="fixed" role="contentinfo">
+            <div data-role="footer" data-theme="b" data-id="appFtr" role="contentinfo">
                 <div data-role="controlgroup" data-ajax="false" data-type="horizontal">
-                    <a href="/mobile/people" data-ajax="false" class="people border-right">People</a>
+                    <a href="/mobile" data-ajax="false" class="people border-right">People</a>
                     <a href="/mobile/departments" data-ajax="false" class="departments">Departments</a>
                     <a href="/mobile/help" data-ajax="false" class="help">Help</a>
                 </div>

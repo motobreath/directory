@@ -1,0 +1,47 @@
+<article>
+    <h1><?php echo $this->person->getFullName()?></h1>
+    <p style="text-transform:capitalize"><?php echo $this->getJobTitle($this->person);?></p>
+    <section class="details">
+        <h4>Contact Information</h4>
+
+        <?php //Only show Email if student ?>
+        <?php if($this->person->getPrimaryAffiliation()=="student"){?>
+            <span class="email detail">Email:</span><a href="mailto:"<?php echo $this->person->getEmail()?>"><?php echo $this->person->getEmail()?></a>
+        <?php }
+        //else show all info
+        else{ ?>
+            <?php if(!empty($this->person->email)) echo "<span class='email detail'>Email:</span><a href='mailto:" . $this->person->email . "'>" . $this->person->email . "</a><br />"?>
+            <?php if(!empty($this->person->phone)) echo "<span class='phone detail'>Phone:</span>" . $this->phoneFormat($this->person->phone) . "<br />"?>
+            <?php if(!empty($this->person->fax)) echo "<span class='fax detail'>Fax:</span>" . $this->phoneFormat($this->person->fax) . "<br />"?>
+            <?php if(!empty($this->person->cellPhone)) echo "<span class='mobile detail'>Mobile:</span>" . $this->phoneFormat($this->person->cellPhone) . "<br />"?>
+            <?php if(!empty($this->person->location)) echo "<span class='location detail'>Location:</span>" . $this->person->location . "<br />"?>
+            <div class="download">
+                <a href="/index/vcard/email/<?php echo $this->person->email?>" class="vcard"></a>
+                <span>(Download this user's vCard)</span>
+            </div>
+
+        <?php } ?>
+
+        <div class="download">
+            <a href="#" class="sms" id="sendSMS"></a>
+            <span>(Send this user's information to your phone)</span>
+        </div>
+        <div id="sendSMSForm" <?php if(!$this->submitted) echo "style='display:none'"?>>
+            <?php echo $this->form;?>
+        </div>
+         <?php if($this->person->getPrimaryAffiliation()=="student"){?>
+            <div id="resultsContacts">
+                <strong>Please inform the <a href="mailto:registrar@ucmerced.edu">Registrar</a> if you see incorrect information.</strong>
+            </div>
+        <?php
+         }
+         else{?>
+            <div id="resultsContacts">
+                <strong>If you have a ucmnetid and password and you see incorrect information above, <br /><a href="#">please let us know</a>.</strong>
+            </div>
+         <?php } ?>
+        <p><a href="javascript:history.back()">&laquo; Return to Search Results</a></p>
+    </section>
+    <?php echo $this->getDisclaimer()?>
+</article>
+<?php echo $this->partial("partials/SideDetails.phtml");?>

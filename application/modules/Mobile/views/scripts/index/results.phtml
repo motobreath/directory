@@ -1,0 +1,10 @@
+<h1>Search Results</h1>
+<?php if($this->searchResults){ ?>
+<ul data-role='listview' data-inset='true'>
+    <?php echo $this->partialLoop()->setObjectKey("person")->partialLoop("partials/searchListing.phtml",$this->searchResults); ?>
+</ul>
+<?php }
+else{ ?>
+<div class="errorDiv">No Results Found</div>
+<?php } ?>
+<a href="/mobile" data-role="button">Search Again</a>

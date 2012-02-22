@@ -1,1 +1,4 @@
 /nbproject/private/
+/application/configs/ldap.ini
+/application/configs/db.ini
+/nbproject/

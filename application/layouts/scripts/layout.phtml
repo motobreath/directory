@@ -7,23 +7,30 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title></title>
+	<?php echo $this->headTitle() ?>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 
-	<script src="js/libs/modernizr-2.0.6.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+	<script src="/js/libs/modernizr-2.0.6.min.js"></script>
+        <script src="/js/script.js"></script>
+        <?php echo $this->headLink();?>
+        <?php echo $this->headStyle();?>
+        <?php echo $this->headScript();?>
 </head>
 <body>
 
 <div id="container">
 	<header>
             <nav>
-                <a href="/" class="active">People</a>
-                <a href="/departments">Departments</a>
+                <a href="/" <?php if($this->page=="people") echo "class='active'"?>>People</a>
+                <a href="/site/departments" <?php if($this->page=="dept") echo "class='active'"?>>Departments</a>
                 <a href="http://www.ucmerced.edu" target="_blank">UC Merced Home</a>
             </nav>
 	</header>
@@ -36,13 +43,6 @@
 	</footer>
 </div> <!--! end of #container -->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
-<!-- scripts concatenated and minified via ant build script-->
-<script src="js/plugins.js"></script>
-<script src="js/script.js"></script>
-<!-- end scripts-->
 
 </body>
 </html>
