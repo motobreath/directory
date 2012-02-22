@@ -48,8 +48,6 @@ class App_Controller_Action_Helper_SearchPeople
         }
 
         $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
-        var_dump($filter);
-        die();
         $entries=$this->ldap->search($filter,null,$order);
         $entries=$entries->toArray();
         $results=array();
