@@ -21,8 +21,8 @@ class App_Controller_Action_Helper_SearchPeople
       "fullName"	=> "cn",
       "department"	=> "ucMercedEduApptDeptName1",
       "email"		=> "mail",
-      "telephoneNumber"	=> "telephoneNumber",
-      "dept1"           => "dept1"
+      "telephone"	=> "telephoneNumber",
+      "ucmercededuapptdeptname1"=> "ucmercededuapptdeptname1"
 
     );
 
@@ -36,7 +36,9 @@ class App_Controller_Action_Helper_SearchPeople
             throw new Exception("Invalid LDAP searchBy param. This should have been escaped from the search form");
         }
         $searchFor=$this->ldap->escapeValue($searchFor);
-        if($ldapAttribute=="sn" || $ldapAttribute=="givenName"){
+
+        //add wildcard for firstname, last name, email
+        if($ldapAttribute=="sn" || $ldapAttribute=="givenName" || $ldapAttribute=="email"){
             $searchFor.="*";
         }
 
@@ -46,8 +48,16 @@ class App_Controller_Action_Helper_SearchPeople
         if($ldapAttribute=="sn"){
             $order="givenName";
         }
+        //special search for telephone:
+        //NOTE: replace "-" with " " for best results
+        if($ldapAttribute=="telephoneNumber"){
+            $searchFor=str_replace("-"," ", $searchFor);
+            $filter="(&(|(telephonenumber=*$searchFor*)(mobile=*$searchFor*))(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
+        }
+        else{
+            $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
+        }
 
-        $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
         $entries=$this->ldap->search($filter,null,$order);
         $entries=$entries->toArray();
         $results=array();

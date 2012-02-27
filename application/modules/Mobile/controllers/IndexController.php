@@ -12,6 +12,7 @@ class Mobile_IndexController extends Zend_Controller_Action
     public function init()
     {
         $this->flashMessenger=$this->getHelper("FlashMessenger");
+        $this->getHelper("layout")->getView()->headTitle("UC Merced Directory - People Search");
     }
 
     public function indexAction()

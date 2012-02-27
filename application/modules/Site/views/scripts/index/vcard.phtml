@@ -3,19 +3,8 @@ $filename=$this->escape($this->filename);
 header("Content-Disposition: attachment; filename=$filename".'.vcf');
 header("Content-Disposition: inline; filename=$filename.vcf");
 header("Content-Type: text/x-vCard; name=$filename".'.vcf');
+
+echo $this->buildVCard($this->person);
+
 ?>
 
-BEGIN:VCARD
-VERSION:3.0
-FN: <?php echo $this->person->getFullName()?> \n
-N;charset=iso-8859-1:<?php echo $this->person->getLastName()?>;<?php $this->person->getFirstName()?>\n
-EMAIL;type=WORK:<?php echo $this->person->getEmail()?>\n
-URL;type=HOME:\n
-TITLE;charset=iso-8859-1:\n
-ORG;charset=iso-8859-1:University of California, Merced\n
-ADR;type=WORK;charset=iso-8859-1:;;5200 North Lake Road;Merced;CA;95343;USA\n
-TEL;type=WORK:<?php echo $this->person->getPhone()?>\n
-TEL;WORK;FAX:<?php echo $this->person->getFax()?>\n
-TEL;type=CELL:<?php echo $this->person->getCellPhone()?>\n
-URL;type=WORK:\n
-END:VCARD

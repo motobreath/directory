@@ -7,7 +7,7 @@ class DepartmentsController extends Zend_Controller_Action
      * @var Application_Model_DepartmentMapper
      */
     public $departmentMapper;
-    public $departments = null;
+    public $departments;
     public $flashMessenger;
 
     public function init()
@@ -20,11 +20,13 @@ class DepartmentsController extends Zend_Controller_Action
         $this->flashMessenger=$this->getHelper("FlashMessenger");
 
         $this->getHelper("layout")->getView()->headTitle("UC Merced Directory - Departments");
+
     }
 
     public function indexAction()
     {
         $options=array();
+
         foreach($this->departments as $department){
             $options[$department->getName()]=$department->getName();
         }
@@ -45,6 +47,7 @@ class DepartmentsController extends Zend_Controller_Action
             return;
         }
         $dept=$this->getDepartmentMapper()->find($dept);
+
         if(!$dept){
             $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Invalid search options. Please search again.");
             $this->_redirect("/site/departments");
@@ -60,7 +63,7 @@ class DepartmentsController extends Zend_Controller_Action
 
         $this->view->form=$form;
         $this->view->department=$dept;
-        $this->view->people=$this->getHelper("SearchPeople")->search("dept1",$dept->getName());
+        $this->view->searchResults=$this->getHelper("SearchPeople")->search("ucmercededuapptdeptname1",$dept->getName());
 
     }
 

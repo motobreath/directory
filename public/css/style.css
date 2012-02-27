@@ -39,11 +39,11 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
  * These selection declarations have to be separate
  * No text-shadow: twitter.com/miketaylr/status/12228805301
  * Also: hot pink!
- */
+
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
-
+ */
 
 /* =============================================================================
    Links
@@ -309,7 +309,7 @@ h4,h5,h6{
     background-image:url(/images/h1_bg.gif);
     background-repeat:no-repeat;
     background-position:bottom left;
-    padding:0 0 12px 20px;
+    padding:10px 0 12px 20px;
     font-size:18pt;
     color:#666666;
 }
@@ -451,7 +451,7 @@ section.details{
     line-height:20pt;
 }
 
-section.details span.email, section.details span.email, section.details span.phone, section.details span.fax,span.mobile, section.details span.location{
+section.details span.email, section.details span.email, section.details span.phone, section.details span.fax, section.details span.mobile, section.details span.location{
     width:75px;
 }
 
@@ -500,7 +500,8 @@ section.details .download a.sms{
 }
 
 .disclaimer{
-    padding-top:10px;
+    padding-top:20px;
+    clear:both;
 }
 
 #smsForm{
@@ -558,6 +559,28 @@ p.deptDesc{
     height:50px;
     text-overflow:ellipsis;
     line-height: normal;
+}
+
+#deptSearchResult{
+    background-color:#FEF5CC;
+}
+
+img.pdf{
+    float:right;
+    margin-top:-15px;
+}
+
+.success{
+    border:1px solid #1acc2b;
+    background-color:#d8ffd4;
+    padding:5px;
+    margin:5px 0;
+    color:#1acc2b;
+}
+
+.searchOptionTxt{
+    padding:3px;
+    font-style: italic;
 }
 
 /* =============================================================================

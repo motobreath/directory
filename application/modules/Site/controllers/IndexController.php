@@ -10,6 +10,14 @@ class IndexController extends Zend_Controller_Action
      */
     public $flashMessenger = null;
 
+    public $_namespace="UCMDirectory";
+
+    /**
+     *
+     * @var Zend_Session
+     */
+    public $session;
+
     public function init()
     {
         $this->flashMessenger=$this->getHelper("FlashMessenger");
@@ -23,15 +31,10 @@ class IndexController extends Zend_Controller_Action
         $checkMobile->mobileRedirect();
 
         $form=new Application_Form_Search();
+        $form->setAction("/site/index/results");
         $this->view->searchForm=$form;
-        if($this->getRequest()->isPost()){
-            if ($form->isValid($this->_getAllParams())) {
-                $searchBy = $this->_getParam("searchBy");
-                $searchFor = trim($this->_getParam("searchFor"));
-                $this->view->searchResults=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
-                $this->view->searched=true;
-            }
-        }
+        unset($this->getSession()->searchFor);
+        unset($this->getSession()->searchBy);
 
     }
 
@@ -57,6 +60,11 @@ class IndexController extends Zend_Controller_Action
              $this->_redirect("/");
         }
         $this->view->searchForm=$form;
+        $this->view->searchFor=$searchFor;
+        $this->view->searchBy=$searchBy;
+
+        $this->getSession()->searchFor=$searchFor;
+        $this->getSession()->searchBy=$searchBy;
     }
 
     public function detailsAction()
@@ -67,18 +75,15 @@ class IndexController extends Zend_Controller_Action
         if($this->getRequest()->isPost()){
             $this->view->submitted=true;
             if($form->isValid($this->_getAllParams())){
-                if($this->_getParam("sendAs")=="text"){
-                    $msg=$this->getHelper("SendSMS")->getTextSMS($person);
-                }
-                elseif($this->_getParam("sendAs")=="contact"){
-                    $msg=$this->getHelper("SendSMS")->getVcardSMS($person);
-                }
-
+                $msg=$this->getHelper("SendSMS")->getTextSMS($person);
                 $this->getHelper("SendSMS")->send($this->_getParam("number"),$this->_getParam("carrier"),$msg);
+                $this->view->successSMS=true;
             }
         }
         $this->view->person=$person;
         $this->view->form=$form;
+        $this->view->searchFor=$this->getSession()->searchFor;
+        $this->view->searchBy=$this->getSession()->searchBy;
 
     }
 
@@ -95,6 +100,13 @@ class IndexController extends Zend_Controller_Action
         if($form->isValid($this->_getAllParams())){
 
         }
+    }
+
+    public function getSession(){
+        if(null===$this->session){
+            $this->session=new Zend_Session_Namespace($this->_namespace);
+        }
+        return $this->session;
     }
 
 

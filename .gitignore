@@ -2,3 +2,6 @@
 /application/configs/ldap.ini
 /application/configs/db.ini
 /nbproject/
+/application/tmp/
+/application/logs/
+/application/configs/email.ini

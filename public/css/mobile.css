@@ -151,3 +151,41 @@ div.ui-select{
     padding-top:40px;
     text-align:center;
 }
+
+p.searchResults{
+    padding:0;
+    margin:3px 0;
+    line-height:20pt;
+}
+
+span.email,span.phone,span.fax,span.mobile,span.location,span.url{
+    background-image:url(/images/icons.png);
+    background-repeat:no-repeat;
+    padding-left:22px;
+    display: inline-block;
+}
+
+span.email{
+    background-position: 0 -21px;
+
+}
+span.phone{
+    background-position: 0 -78px;
+    width: 55px;
+}
+span.fax{
+    background-position: 0 6px;
+    width: 55px;
+}
+span.mobile{
+    background-position: 0 -48px;
+    width: 55px;
+}
+
+span.location{
+    background-position: 0 -138px;
+    width: 55px;
+}
+span.url{
+    background-position: 0 -166px;
+}

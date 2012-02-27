@@ -1,8 +1,10 @@
 <h1>Search Results</h1>
+<div data-role="collapsible" data-iconpos="right">
+    <h3>I'm a header</h3>
+    <p><code>data-iconpos="right"</code></p>
+</div>
 <?php if($this->searchResults){ ?>
-<ul data-role='listview' data-inset='true'>
-    <?php echo $this->partialLoop()->setObjectKey("person")->partialLoop("partials/searchListing.phtml",$this->searchResults); ?>
-</ul>
+<?php echo $this->partialLoop()->setObjectKey("person")->partialLoop("partials/searchListing.phtml",$this->searchResults); ?>
 <?php }
 else{ ?>
 <div class="errorDiv">No Results Found</div>

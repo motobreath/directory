@@ -96,6 +96,10 @@
               <actionMethod actionName="index"/>
               <actionMethod actionName="results"/>
             </controllerFile>
+            <controllerFile controllerName="Print">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="pdf"/>
+            </controllerFile>
           </controllersDirectory>
           <formsDirectory enabled="false"/>
           <layoutsDirectory enabled="false"/>
@@ -119,6 +123,12 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Departments">
                 <viewScriptFile forActionName="results"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Print">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Print">
+                <viewScriptFile forActionName="pdf"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>
@@ -146,6 +156,10 @@
             <controllerFile controllerName="Redirect">
               <actionMethod actionName="index"/>
             </controllerFile>
+            <controllerFile controllerName="Print">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="contact"/>
+            </controllerFile>
           </controllersDirectory>
           <formsDirectory enabled="false"/>
           <layoutsDirectory enabled="false"/>
@@ -172,6 +186,9 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Index">
                 <viewScriptFile forActionName="details"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Print">
+                <viewScriptFile forActionName="index"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

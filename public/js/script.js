@@ -20,9 +20,15 @@ $(function(){
 
         return true;
     })
-    //TODO: Validate sms form client side
-    $("#smsForm").submit(function(){
 
+    $("#smsForm").submit(function(){
+        $(".errorDiv").remove();
+        $(".errors").remove();
+        var number=$("#number").val();
+        if(number=="" || number=="0"){
+            $("label[for='number']").before("<div class='errorDiv'>Please enter your Cellphone Number in the format xxx-xxx-xxxx</div>");
+            return false;
+        }
     })
 
     $("#searchDepartments").submit(function(){

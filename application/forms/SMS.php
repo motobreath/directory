@@ -55,18 +55,11 @@ class Application_Form_SMS
                 ->getDecorator("Description")->setEscape(false);
         $this->addElement($carrier);
 
-        $sendAs=new Zend_Form_Element_Select("sendAs");
-        $sendAs->addMultiOptions(array(
-            "contact"=>"Send as Contact",
-            "text"=>"Send as Plain Text",
-
-        ));
-        $sendAs->setLabel("Text Format:")->setDecorators(array("Label","ViewHelper","HtmlTag"));
-        $this->addElement($sendAs);
-
         $submit=new Zend_Form_Element_Submit("submit");
         $submit->setLabel("Send")->setDecorators(array("ViewHelper"))->setAttrib("class","submit");
         $this->addElement($submit);
+
+        $this->addElement('hash', 'no_csrf_foo', array('salt' => 'unique'));
 
     }
 

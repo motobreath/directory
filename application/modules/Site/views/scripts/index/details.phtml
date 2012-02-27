@@ -27,6 +27,9 @@
             <span>(Send this user's information to your phone)</span>
         </div>
         <div id="sendSMSForm" <?php if(!$this->submitted) echo "style='display:none'"?>>
+            <?php if($this->successSMS){ ?>
+                <p class="success">Success! Your Message was sent.</p>
+            <?php } ?>
             <?php echo $this->form;?>
         </div>
          <?php if($this->person->getPrimaryAffiliation()=="student"){?>
@@ -40,8 +43,8 @@
                 <strong>If you have a ucmnetid and password and you see incorrect information above, <br /><a href="#">please let us know</a>.</strong>
             </div>
          <?php } ?>
-        <p><a href="javascript:history.back()">&laquo; Return to Search Results</a></p>
+        <p><a href="/site/index/results/searchFor/<?php echo $this->searchFor?>/searchBy/<?php echo $this->searchBy?>">&laquo; Return to Search Results</a></p>
     </section>
     <?php echo $this->getDisclaimer()?>
 </article>
-<?php echo $this->partial("partials/SideDetails.phtml");?>
+<?php echo $this->partial("partials/SideDetails.phtml",array("searchFor"=>$this->searchFor,"searchBy"=>$this->searchBy));?>

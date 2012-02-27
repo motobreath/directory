@@ -45,6 +45,7 @@ class App_Controller_Action_Helper_SendSMS
         $number=str_replace("-","",$number);
         $carriers=$this->getCarriers();
         $mail=$this->getMail();
+
         //if none selected or they dn't know carrier, send to all
         //Only correct carrier will respond with correct number
         if(empty($requestedCarrier) || $requestedCarrier=='none'){
@@ -58,14 +59,9 @@ class App_Controller_Action_Helper_SendSMS
             }
             try{
                 $mail->send();
-                echo "sent to:" . $sentTo;
-
             }
             catch(Exception $e){
-                var_dump($e);
-                die();
-                //just catching exceptions, nothing special here
-                //please move along
+                
             }
 
         }
@@ -77,7 +73,8 @@ class App_Controller_Action_Helper_SendSMS
                 $mail->send();
             }
             catch(Exception $e){
-                //again just catcing. move along.
+                var_dump($e);
+                die();
             }
         }
 

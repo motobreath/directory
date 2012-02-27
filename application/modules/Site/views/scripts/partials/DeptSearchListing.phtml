@@ -1,19 +1,19 @@
 <li <?php if($this->partialCounter % 2==0) echo "class='alt'"?>>
     <div class="left">
-        <a href="#"  class="name"><?php echo $this->dept->getName()?></a><br />
+        <a href="/site/departments/results/department/<?php echo $this->dept->getName()?>"  class="name"><?php echo $this->dept->getName()?></a><br />
         <?php if(!empty($this->dept->description)){ ?>
 
         <p class="deptDesc">
 
             <?php echo substr($this->dept->getDescription(), 0, 120)?>
             <?php if(strlen($this->dept->description)>=120) echo "..." ?>
-            <a href="#" class="url">(Click to see more)</a>
+            <a href="/site/departments/results/department/<?php echo $this->dept->getName()?>" class="url">(Click to see more)</a>
         </p>
         <?php } ?>
     </div>
     <div class="right">
         <?php if(!empty($this->dept->phone)) echo "<span class='phone'>Phone:</span>" . $this->phoneFormat($this->dept->phone) . "<br />"?>
         <?php if(!empty($this->dept->fax)) echo "<span class='fax'>Fax:</span>" . $this->phoneFormat($this->dept->fax) . "<br />"?>
-        <?php if(!empty($this->dept->url)) echo "<span class='url'><a href='" .$this->dept->url . "' target='_blank' title='" . $this->dept->url . "'>Visit Website</span>" ?>
+        <?php if(!empty($this->dept->url)) echo "<span class='url'><a href='" .$this->dept->url . "' target='_blank' title='" . $this->dept->url . "'>Visit Website</a></span>" ?>
     </div>
 </li>
