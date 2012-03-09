@@ -329,7 +329,7 @@ h4,h5,h6{
     background: url("/images/sidebar_bg.jpg") no-repeat scroll left top transparent;
     line-height: 14pt;
     color: #AAAAAA;
-    min-height: 270px;
+    min-height: 365px;
 }
 
 #main aside h3{
@@ -382,7 +382,6 @@ ul.searchResults li div.left, ul.searchResults li div.right{
 ul.searchResults li div.left{
     width:352px;
     padding-right:30px;
-    text-transform: capitalize;
 }
 
 ul.searchResults li div.left a.name{
@@ -599,6 +598,14 @@ input.submit{
     padding:3px 6px;
 }
 
+#searchResults div.submit{
+    margin-left:103px;
+}
+
+#searchResults label{
+    width:100px;
+    display:inline-block;
+}
 
 /* =============================================================================
    Non-semantic helper classes

@@ -24,13 +24,13 @@
 .innerContentItem{
     background-color:#fff;
     padding:10px 12px;
-    margin-bottom:1em;
+    margin:1em 0;
 }
 .innerContentItem.ui-corner-all{
 
 }
 
-.ui-header{
+.hdr{
     height:40px;
     background-image: url(/images/mobile/logo.png);
     background-position:50% 50%;
@@ -94,10 +94,18 @@ for other phones, using same images for now to avoid duplicates during dev*/
      background-image: url(/images/mobile/helpFtrIcon.png);
 }
 
+
 #searchForm{
-    padding-top:10px;
 }
 
+#searchForm br{
+
+}
+
+#searchForm .submit{
+    margin-top:1em;
+}
+/*
 #searchForm label{
  display: block;
     float: left;
@@ -120,25 +128,7 @@ div.ui-select{
 #searchForm div.submit{
     margin-top:30px;
 }
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-    .ui-footer a.people {
-         background-image: url(/images/mobile/peopleFtrIcon-retna.png);
-         background-size:40px 40px;
-    }
-    .ui-footer a.departments {
-        background-image: url(/images/mobile/departmentsFtrIcon-retna.png);
-        background-size:40px 40px;
-    }
-    .ui-footer a.help {
-        background-image: url(/images/mobile/helpFtrIcon-retna.png);
-        background-size:40px 40px;
-    }
-    .ui-header{
-        background-image: url(/images/mobile/logo-retna.png);
-        background-size:179px 30px;
-    }
-}
+*/
 
 .errorDiv{
     padding-top:10px;
@@ -148,7 +138,7 @@ div.ui-select{
 
 #leaveMobile{
     clear:both;
-    padding-top:40px;
+    padding-top:20px;
     text-align:center;
 }
 
@@ -188,4 +178,30 @@ span.location{
 }
 span.url{
     background-position: 0 -166px;
+}
+
+p.deptLinks{
+    line-height:20pt;
+}
+
+.error{
+    color:#ff0000;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-footer a.people {
+         background-image: url(/images/mobile/peopleFtrIcon-retna.png);
+         background-size:40px 40px;
+    }
+    .ui-footer a.departments {
+        background-image: url(/images/mobile/departmentsFtrIcon-retna.png);
+        background-size:40px 40px;
+    }
+    .ui-footer a.help {
+        background-image: url(/images/mobile/helpFtrIcon-retna.png);
+        background-size:40px 40px;
+    }
+    .hdr{
+        background-image: url(/images/mobile/logo-retna.png);
+        background-size:179px 30px;
+    }
 }

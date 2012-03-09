@@ -5,3 +5,5 @@
 /application/tmp/
 /application/logs/
 /application/configs/email.ini
+/logs/
+/public/PhoneGap/.metadata/

@@ -2,13 +2,17 @@
 
 class DepartmentsController extends Zend_Controller_Action
 {
+
     /**
-     *
      * @var Application_Model_DepartmentMapper
+     *
+     *
      */
-    public $departmentMapper;
-    public $departments;
-    public $flashMessenger;
+    public $departmentMapper = null;
+
+    public $departments = null;
+
+    public $flashMessenger = null;
 
     public function init()
     {
@@ -21,6 +25,13 @@ class DepartmentsController extends Zend_Controller_Action
 
         $this->getHelper("layout")->getView()->headTitle("UC Merced Directory - Departments");
 
+        //adding mobile, just like that
+        $this->_helper->contextSwitch()
+                ->addActionContext("index","mobile")
+                ->addActionContext("results","mobile")
+                ->addActionContext("details","mobile")
+                ->initContext();
+
     }
 
     public function indexAction()
@@ -30,10 +41,11 @@ class DepartmentsController extends Zend_Controller_Action
         foreach($this->departments as $department){
             $options[$department->getName()]=$department->getName();
         }
-        $form=new Application_Form_SearchDepartments(array(
+        $formOptions=array(
             "departments"=>$options
-        ));
-        $form->setAction("/site/departments/results");
+        );
+        $form=$this->getHelper("FormLoader")->load("SearchDepartments",$formOptions);
+        $form->setAction("/site/departments/search");
         $this->view->form=$form;
         $this->view->departments=$this->departments;
     }
@@ -56,9 +68,10 @@ class DepartmentsController extends Zend_Controller_Action
         foreach($this->departments as $department){
             $options[$department->getName()]=$department->getName();
         }
-        $form=new Application_Form_SearchDepartments(array(
+        $formOptions=array(
             "departments"=>$options
-        ));
+        );
+        $form=$this->getHelper("FormLoader")->load("SearchDepartments",$formOptions);
         $form->populate(array("department"=>$dept));
 
         $this->view->form=$form;
@@ -67,14 +80,44 @@ class DepartmentsController extends Zend_Controller_Action
 
     }
 
-    public function getDepartmentMapper() {
+    public function detailsAction()
+    {
+        $dept=$this->_getParam("department");
+        if(empty($dept) || $dept=="0"){
+            $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Invalid search options. Empty search dept. Please search again.");
+            $this->_redirect("/site/departments");
+            return;
+        }
+        $this->getHelper("layout")->setLayout("mobile.dialog");
+        $dept=$this->getDepartmentMapper()->find($dept);
+        $this->view->searchResults=true;
+        if(empty($dept->description) && empty($dept->phone) && empty($dept->fax) && empty($dept->url)){
+            $this->view->searchResults=false;
+        }
+        $this->view->dept=$dept;
+    }
+
+    public function getDepartmentMapper()
+    {
         if(null===$this->departmentMapper){
             $this->departmentMapper=new Application_Model_DirectoryDepartmentMapper();
         }
         return $this->departmentMapper;
     }
 
+    public function searchAction()
+    {
+        $this->_redirect("/site/departments/results/department/" . $this->_getParam("department"));
+    }
+
+
+
+
 }
+
+
+
+
 
 
 

@@ -1,0 +1,25 @@
+<?php echo $this->displayErrors() ?>
+
+<?php if($this->searchResults){ ?>
+<div class="innerContentItem ui-corner-all ui-shadow">
+    <h1><?php echo $this->department->getName()?></h1>
+    <?php if(!empty($this->department->description)){ ?>
+    <p><?php echo $this->department->getDescription()?></p>
+    <?php } ?>
+    <p class="deptLinks">
+        <?php if(!empty($this->department->phone)) echo "<span class='phone'>Phone:</span>" . $this->phoneFormat($this->department->phone) . "<br />"?>
+        <?php if(!empty($this->department->fax)) echo "<span class='fax'>Fax:</span>" . $this->phoneFormat($this->department->fax) . "<br />"?>
+        <?php if(!empty($this->department->url)) echo "<span class='url'><a href='" .$this->department->url . "' target='_blank' title='" . $this->department->url . "'>Visit Website</a></span>" ?>
+    </p>
+</div>
+    <h2>Search Results for <?php echo $this->department->getName()?></h2>
+    <?php echo $this->partialLoop()->setObjectKey('person')
+            ->partialLoop("partials/searchListing.mobile.phtml",$this->searchResults) ?>
+
+<?php }
+    else{ ?>
+    <div class="innerContentItem ui-corner-all ui-shadow">
+        <p class='error'>No Results Found - There are currently no listings in this department.</p>
+    </div>
+<?php } ?>
+<p><a href="/site/departments" data-role="button">Search Again</a></p>

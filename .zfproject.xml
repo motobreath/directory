@@ -15,6 +15,7 @@
       </controllersDirectory>
       <formsDirectory enabled="false">
         <formFile formName="Search"/>
+        <formFile formName="Update"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory/>
@@ -91,17 +92,36 @@
               <actionMethod actionName="results"/>
               <actionMethod actionName="details"/>
               <actionMethod actionName="vcard"/>
+              <actionMethod actionName="search"/>
+              <actionMethod actionName="error"/>
             </controllerFile>
             <controllerFile controllerName="Departments">
               <actionMethod actionName="index"/>
               <actionMethod actionName="results"/>
+              <actionMethod actionName="search"/>
+              <actionMethod actionName="detail"/>
             </controllerFile>
             <controllerFile controllerName="Print">
               <actionMethod actionName="index"/>
               <actionMethod actionName="pdf"/>
             </controllerFile>
+            <controllerFile controllerName="Redirect">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="mobile"/>
+            </controllerFile>
+            <controllerFile controllerName="Help">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="contact"/>
+              <actionMethod actionName="update"/>
+            </controllerFile>
+            <controllerFile controllerName="Email">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="sendcontact"/>
+            </controllerFile>
           </controllersDirectory>
-          <formsDirectory enabled="false"/>
+          <formsDirectory>
+            <formFile formName="Contact"/>
+          </formsDirectory>
           <layoutsDirectory enabled="false"/>
           <modelsDirectory/>
           <viewsDirectory>
@@ -129,6 +149,36 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Print">
                 <viewScriptFile forActionName="pdf"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Redirect">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Index">
+                <viewScriptFile forActionName="search"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Departments">
+                <viewScriptFile forActionName="search"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Help">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Email">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Email">
+                <viewScriptFile forActionName="sendcontact"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Help">
+                <viewScriptFile forActionName="contact"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Help">
+                <viewScriptFile forActionName="update"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Index">
+                <viewScriptFile forActionName="error"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Departments">
+                <viewScriptFile forActionName="detail"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

@@ -16,7 +16,7 @@ class App_View_Helper_BuildVCard {
         $output="BEGIN:VCARD\n";
         $output.="VERSION:3.0\n";
         $output.="FN: " .  $person->getFullName() . " \n";
-        $output.="N;charset=iso-8859-1:" .  $person->getLastName() .  $person->getFirstName() . "\n";
+        $output.="N;charset=iso-8859-1:" .  $person->getFullName() . "\n";
         $output.="EMAIL;type=WORK:" .  $person->getEmail() . "\n";
         $output.="URL;type=HOME:\n";
         $output.="TITLE;charset=iso-8859-1:\n";

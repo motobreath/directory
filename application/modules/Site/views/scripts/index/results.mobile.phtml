@@ -1,0 +1,8 @@
+<h1>Search Results</h1>
+<?php if($this->searchResults){ ?>
+<?php echo $this->partialLoop()->setObjectKey("person")->partialLoop("partials/searchListing.mobile.phtml",$this->searchResults); ?>
+<?php }
+else{ ?>
+<div class="errorDiv">No Results Found</div>
+<?php } ?>
+<a href="/mobile" data-role="button">Search Again</a>

@@ -2,6 +2,8 @@
 
 /**
  * Redirects user to /mobile module if mobile
+ * phasing this out, turns out its easier to use context switch
+ * same controller, different view
  *
  * @author Chris
  */

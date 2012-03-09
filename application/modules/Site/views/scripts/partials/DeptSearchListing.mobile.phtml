@@ -1,0 +1,29 @@
+<?php /*
+<div data-role="collapsible" data-iconpos="right" data-content-theme="c">
+    <h3><?php echo $this->dept->getName()?></h3>
+    <?php if(!empty($this->dept->description)){ ?>
+        <p class="deptDesc">
+            <?php echo $this->dept->getDescription()?>
+        </p>
+    <?php } ?>
+    <p class="deptLinks">
+        <?php if(!empty($this->dept->phone)) echo "<span class='phone'>Phone:</span>" . $this->phoneFormat($this->dept->phone) . "<br />"?>
+        <?php if(!empty($this->dept->fax)) echo "<span class='fax'>Fax:</span>" . $this->phoneFormat($this->dept->fax) . "<br />"?>
+        <?php if(!empty($this->dept->url)) echo "<span class='url'><a href='" .$this->dept->url . "' target='_blank' title='" . $this->dept->url . "'>Visit Website</a></span>" ?>
+    </p>
+    <a href="/site/departments/results/department/<?php echo $this->dept->getName()?>"  class="name" data-role="button"><?php echo $this->dept->getName()?></a>
+</div>
+ *
+ */
+?>
+
+<?php
+$this->layout()->currentLetter=substr($this->dept->getName(), 0, 1);
+if(strtoupper($this->layout()->currentLetter)!=strtoupper($this->layout()->previousLetter)){
+    $this->layout()->previousLetter=$this->layout()->currentLetter;
+    echo "<li data-role='list-divider'>" . $this->layout()->currentLetter . "</li>";
+}
+?>
+
+<li><a href="/site/departments/details/department/<?php echo $this->dept->getName()?>/" data-rel="dialog"><?php echo $this->dept->getName()?></a></li>
+

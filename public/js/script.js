@@ -29,13 +29,21 @@ $(function(){
             $("label[for='number']").before("<div class='errorDiv'>Please enter your Cellphone Number in the format xxx-xxx-xxxx</div>");
             return false;
         }
+        return true;
+    })
+
+    $("#searchDepartments #department").change(function(){
+         window.location="/site/departments/search/department/"+$(this).val();
     })
 
     $("#searchDepartments").submit(function(){
-        var dept=$("#department").val();
+        var dept;
+        dept=$("#department").val()
         if(dept=="" || dept=="0"){
             $("label[for='department']").before("<div class='errorDiv'>Please select a department</div>");
             return false;
         }
+        return true;
     })
+
 })

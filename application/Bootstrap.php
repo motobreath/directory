@@ -40,7 +40,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $backOptions = array(
             "cache_dir" => APPLICATION_PATH . "/tmp/"
         );
-        Zend_Registry::set("deptCache", Zend_Cache::factory("Core", "File", $frontOptions, $backOptions));
+        Zend_Registry::set("cache", Zend_Cache::factory("Core", "File", $frontOptions, $backOptions));
     }
 
 }

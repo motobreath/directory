@@ -6,16 +6,18 @@
     </article>
     <article>
         <a href="/site/print/pdf/people/<?php echo $this->searchFor?>/search/<?php echo $this->searchBy?>" target="_blank"><img src="/images/print-to-pdf-60x43.png" class="pdf" /></a>
-        <h1>Search Results</h1>
+        <h1>Search Results for <?php echo $this->searchFor?></h1>
         <?php if($this->searchResults){ ?>
         <ul class="searchResults">
             <?php echo $this->partialLoop()->setObjectKey('person')
                     ->partialLoop("partials/searchListing.phtml",$this->searchResults) ?>
         </ul>
+        <p>Do you see incorrect person information? If so, click on a person's name and then let us know. If there are any other issues, please email <a href="mailto:idm@ucmerced.edu">idm@ucmerced.edu</a></p>
         <?php }
             else{ ?>
             <p class='error'>No Results Found</p>
         <?php } ?>
+
         <?php echo $this->getDisclaimer()?>
     </article>
 </div>

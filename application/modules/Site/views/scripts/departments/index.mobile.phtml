@@ -1,0 +1,13 @@
+<?php echo $this->displayErrors() ?>
+<h1>Departments</h1>
+<?php echo $this->form?>
+<ul data-role="listview" data-inset="true">
+<li data-role='list-divider'>A</li>
+<?php
+    $this->layout()->currentLetter="A";
+    $this->layout()->previousLetter="A";
+    echo $this->partialLoop()->setObjectKey('dept')
+    ->partialLoop("partials/DeptSearchListing.mobile.phtml",$this->departments)
+?>
+
+</ul>

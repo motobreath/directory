@@ -16,26 +16,22 @@ class Mobile_PrintController extends Zend_Controller_Action
     public function contactAction()
     {
         $this->_helper->layout->disableLayout();
+        $mail=new Zend_Mail();
         $view = $this->getHelper('ViewRenderer')->view;
         $email=$this->_getParam("email");
         $view->person=$this->getHelper("SearchPeople")->getPerson($email);
         $msg = $view->render('print/contact.phtml');
         $filename=$this->view->person->getLastName() . "_" . $this->view->person->getFirstName();
 
-        $mail=new Zend_Mail();
 
         //create vcard attachment
-        $at=$mail->createAttachment($msg);
-        $at->type        = 'text/vcard';
+        $at=new Zend_Mime_Part($msg);
         $at->disposition = Zend_Mime::DISPOSITION_INLINE;
         $at->encoding    = Zend_Mime::ENCODING_BASE64;
         $at->filename    = $filename . ".vcf";
+        $mail->addAttachment($at);
 
-        //building wierd body message required to send email
-        $semi_rand = md5(time());
-        $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
-
-        $message ="Contact VCard for " . $view->person->getFullName();
+        $message ="Contact VCard for " . $view->person->getFullName() . " - This message was auto generated from UC Merced Directory, please do not reply.";
 
         $mail->setBodyText($message);
 

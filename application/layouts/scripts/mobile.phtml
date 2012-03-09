@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
         <link rel="stylesheet" href="/css/mobile.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-        <script src="/js/mobile.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+        <script src="/js/mobile.js"></script>
 
         <?php echo $this->headLink();?>
         <?php echo $this->headStyle();?>
@@ -19,19 +19,18 @@
 
     </head>
     <body>
-        <div data-role="page">
-            <div data-role="header" data-theme="b">
-            </div><!-- /header -->
+        <div data-role="page" data-add-back-btn="true" data-back-btn-text="&nbsp;">
+            <div data-role="header" data-theme="b" class="hdr"></div><!-- /header -->
 
             <div data-role="content">
                 <?php echo $this->layout()->content; ?>
             </div>
 
-            <div data-role="footer" data-theme="b" data-id="appFtr" role="contentinfo">
-                <div data-role="controlgroup" data-ajax="false" data-type="horizontal">
-                    <a href="/mobile" data-ajax="false" class="people border-right">People</a>
-                    <a href="/mobile/departments" data-ajax="false" class="departments">Departments</a>
-                    <a href="/mobile/help" data-ajax="false" class="help">Help</a>
+            <div data-role="footer" data-theme="b">
+                <div data-role="controlgroup" data-type="horizontal">
+                    <a href="/site/index/" class="people border-right">People</a>
+                    <a href="/site/departments/" class="departments">Departments</a>
+                    <a href="/site/help/" class="help">Help</a>
                 </div>
             </div>
 

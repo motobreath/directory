@@ -7,58 +7,54 @@ class IndexController extends Zend_Controller_Action
      * @var Zend_Controller_Action_Helper_FlashMessenger
      *
      *
+     *
+     *
      */
     public $flashMessenger = null;
 
-    public $_namespace="UCMDirectory";
+    public $_namespace = 'UCMDirectory';
 
     /**
-     *
      * @var Zend_Session
+     *
+     *
      */
-    public $session;
+    public $session = null;
 
     public function init()
     {
         $this->flashMessenger=$this->getHelper("FlashMessenger");
         $this->getHelper("layout")->getView()->headTitle("UC Merced Directory - People Search");
         $this->view->page="people";
+        $this->_helper->contextSwitch()
+                ->addActionContext("index","mobile")
+                ->addActionContext("results","mobile")
+                ->initContext();
     }
 
     public function indexAction()
     {
-        $checkMobile=$this->getHelper("MobileRedirect");
-        $checkMobile->mobileRedirect();
-
-        $form=new Application_Form_Search();
-        $form->setAction("/site/index/results");
+        $this->resetSearchSession();
+        $form=$this->getHelper("FormLoader")->load("Search");
+        $form->setAction("/site/index/search");
         $this->view->searchForm=$form;
-        unset($this->getSession()->searchFor);
-        unset($this->getSession()->searchBy);
 
     }
 
     public function resultsAction()
     {
-        $searchFor=$this->_getParam("searchFor");
-        $searchBy=$this->_getParam("searchBy");
+        $searchBy = $this->_getParam("searchBy");
+        $searchFor = trim($this->_getParam("searchFor"));
         if(empty($searchFor) || empty($searchBy)){
             $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Invalid search options. Please search again.");
             $this->_redirect("/");
             return;
         }
-        $form=new Application_Form_Search();
-        if ($form->isValid($this->_getAllParams())) {
-            $searchBy = $this->_getParam("searchBy");
-            $searchFor = trim($this->_getParam("searchFor"));
-            $this->view->searchResults=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
-        }
-        else{
-             foreach($form->getErrors() as $error){
-                 $this->flashMessenger->setNamespace("directoryErrors")->addMessage($error[0]);
-             }
-             $this->_redirect("/");
-        }
+        $form=$this->getHelper("FormLoader")->load("Search");
+        $form->setAction("/site/index/search");
+
+        $this->view->searchResults=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
+
         $this->view->searchForm=$form;
         $this->view->searchFor=$searchFor;
         $this->view->searchBy=$searchBy;
@@ -71,7 +67,10 @@ class IndexController extends Zend_Controller_Action
     {
         $email=$this->_getParam("email");
         $person=$this->getHelper("SearchPeople")->getPerson($email);
-        $form=new Application_Form_SMS();
+        if(!$person){
+            $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Person not found. Please search again.");
+        }
+        $form=$this->getHelper("FormLoader")->load("SMS");
         if($this->getRequest()->isPost()){
             $this->view->submitted=true;
             if($form->isValid($this->_getAllParams())){
@@ -85,6 +84,8 @@ class IndexController extends Zend_Controller_Action
         $this->view->searchFor=$this->getSession()->searchFor;
         $this->view->searchBy=$this->getSession()->searchBy;
 
+        $this->getSession()->detailPerson=$person;
+
     }
 
     public function vcardAction()
@@ -95,22 +96,50 @@ class IndexController extends Zend_Controller_Action
         $this->view->filename=$this->view->person->getLastName() . "_" . $this->view->person->getFirstName();
     }
 
-    public function sendsmsAction(){
-        $form=new Application_Form_SMS();
-        if($form->isValid($this->_getAllParams())){
-
-        }
-    }
-
-    public function getSession(){
+    public function getSession()
+    {
         if(null===$this->session){
             $this->session=new Zend_Session_Namespace($this->_namespace);
         }
         return $this->session;
     }
 
+    public function searchAction()
+    {
+        $form=$this->getHelper("FormLoader")->load("Search");
+        if ($form->isValid($this->_getAllParams())){
+            $searchBy = $this->_getParam("searchBy");
+            $searchFor = trim($this->_getParam("searchFor"));
+            $this->_redirect("/site/index/results/searchBy/$searchBy/searchFor/$searchFor");
+        }
+        else{
+            foreach($form->getErrors() as $error){
+                 $this->flashMessenger->setNamespace("directoryErrors")->addMessage($error[0]);
+             }
+             $this->_redirect("/");
+        }
+
+    }
+
+    private function resetSearchSession()
+    {
+        unset($this->getSession()->searchFor);
+        unset($this->getSession()->searchBy);
+        unset($this->getSession()->detailPerson);
+
+    }
+
+    public function errorAction()
+    {
+        throw new Exception("This the error check action.", 500);
+    }
+
 
 }
+
+
+
+
 
 
 

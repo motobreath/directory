@@ -36,7 +36,7 @@ class Application_Model_DirectoryDepartmentMapper {
 
     public function __construct(){
         $this->db=Zend_Db_Table_Abstract::getDefaultAdapter();
-        $this->cache=Zend_Registry::get("deptCache");
+        $this->cache=Zend_Registry::get("cache");
     }
 
     /**
@@ -103,7 +103,6 @@ class Application_Model_DirectoryDepartmentMapper {
             //cache these
             $this->cache->save($results,"departments");
             $this->departments=$results;
-
         }
         return $this->departments;
     }

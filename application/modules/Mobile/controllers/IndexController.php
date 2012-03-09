@@ -22,6 +22,7 @@ class Mobile_IndexController extends Zend_Controller_Action
         $form->getElement("searchBy")->removeDecorator("HtmlTag");
         $form->getElement("submit")->addDecorator("HtmlTag",array("tag"=>"div","class"=>"submit"));
         $this->view->searchForm=$form;
+         
     }
 
     public function resultsAction()
