@@ -1,0 +1,9 @@
+<article>
+    <h1>Update Information</h1>
+    <?php if($this->sent){
+        echo "<p class='success'>Success! Your message was sent.</p>";
+    }
+    ?>
+    <?php echo $this->form?>
+</article>
+<?php echo $this->partial("partials/SideUpdate.phtml"); ?>

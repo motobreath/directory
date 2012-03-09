@@ -1,0 +1,22 @@
+#updateForm label, #updateForm select, #updateForm input, #updateForm textarea{
+    display:inline-block;
+    width:175px;
+}
+
+#updateForm label{
+    clear:both;
+}
+
+#updateForm textarea{
+    height:100px;
+}
+
+#updateForm br{
+    clear:left;
+}
+
+#updateForm #submit{
+    width:auto;
+    padding:3px 8px;
+    margin-left:175px;
+}
