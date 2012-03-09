@@ -80,22 +80,6 @@ class DepartmentsController extends Zend_Controller_Action
 
     }
 
-    public function detailsAction()
-    {
-        $dept=$this->_getParam("department");
-        if(empty($dept) || $dept=="0"){
-            $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Invalid search options. Empty search dept. Please search again.");
-            $this->_redirect("/site/departments");
-            return;
-        }
-        $this->getHelper("layout")->setLayout("mobile.dialog");
-        $dept=$this->getDepartmentMapper()->find($dept);
-        $this->view->searchResults=true;
-        if(empty($dept->description) && empty($dept->phone) && empty($dept->fax) && empty($dept->url)){
-            $this->view->searchResults=false;
-        }
-        $this->view->dept=$dept;
-    }
 
     public function getDepartmentMapper()
     {
