@@ -50,7 +50,7 @@ class Application_Form_SMS
         $carrier=new Zend_Form_Element_Select("carrier");
         $carrier->addMultiOptions($carriers)
                 ->setLabel("Select your provider:")
-                ->setDescription("<em>Mobile provider not in the list? <a href='mailto:cmitchell@ucmerced.edu'>Email Us</a></em>")
+                ->setDescription("<em>Mobile provider not in the list? <a href='mailto:idm@ucmerced.edu'>Email Us</a></em>")
                 ->setDecorators(array("Errors","Label","ViewHelper",array("Description",array("tag"=>"span")),"HtmlTag"))
                 ->getDecorator("Description")->setEscape(false);
         $this->addElement($carrier);
