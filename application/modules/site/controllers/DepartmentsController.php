@@ -72,6 +72,7 @@ class DepartmentsController extends Zend_Controller_Action
             "departments"=>$options
         );
         $form=$this->getHelper("FormLoader")->load("SearchDepartments",$formOptions);
+        $form->setAction("/site/departments/search");
         $form->populate(array("department"=>$dept));
 
         $this->view->form=$form;
