@@ -108,6 +108,7 @@
             <controllerFile controllerName="Redirect">
               <actionMethod actionName="index"/>
               <actionMethod actionName="mobile"/>
+              <actionMethod actionName="index"/>
             </controllerFile>
             <controllerFile controllerName="Help">
               <actionMethod actionName="index"/>
@@ -118,6 +119,7 @@
               <actionMethod actionName="index"/>
               <actionMethod actionName="sendcontact"/>
             </controllerFile>
+            <controllerFile controllerName="Redirect"/>
           </controllersDirectory>
           <formsDirectory>
             <formFile formName="Contact"/>
@@ -179,6 +181,9 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Departments">
                 <viewScriptFile forActionName="detail"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Redirect">
+                <viewScriptFile forActionName="index"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>
