@@ -54,7 +54,7 @@ class ErrorController extends Zend_Controller_Action
                 $mail->send();
             }
             catch(Exception $e){
-                $log->log($e, $priority, $errors->exception);
+                $log->log($errors->exception, $priority, $errors->exception);
             }
         }
 

@@ -131,7 +131,7 @@ class IndexController extends Zend_Controller_Action
 
     public function errorAction()
     {
-        throw new Exception("This the error check action.", 500);
+        throw new Exception("This be the error check action.", 500);
     }
 
 
