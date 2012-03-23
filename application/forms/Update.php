@@ -63,7 +63,7 @@ class Application_Form_Update extends Zend_Form
         $this->addElement($mso);
 
 
-        $comments=new Zend_Form_Element_TextArea("comments");
+        $comments=new Zend_Form_Element_Textarea("comments");
         $comments->setLabel("Comments:")->setDecorators(array("ViewHelper","Label",array("HtmlTag",array("tag"=>"br","openOnly"=>true))));
         $this->addElement($comments);
 
