@@ -27,8 +27,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     protected function _initDb(){
         $config=new Zend_Config_Ini(APPLICATION_PATH . "/configs/db.ini",APPLICATION_ENV);
-        var_dump($config);
-        die();
         $adapter=new Zend_Db_Adapter_Oracle($config);
         Zend_Db_Table_Abstract::setDefaultAdapter($adapter);
     }
