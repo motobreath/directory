@@ -20,7 +20,7 @@ class ErrorController extends Zend_Controller_Action
                 $this->getResponse()->setHttpResponseCode(404);
                 $priority = Zend_Log::NOTICE;
                 $this->view->h1Message="That page is hiding...";
-                $this->view->message = 'Page not found';
+                $this->view->message = 'Page not found. <a href="/">Return Home</a>';
                 break;
             default:
                 // application error
@@ -54,7 +54,7 @@ class ErrorController extends Zend_Controller_Action
                 $mail->send();
             }
             catch(Exception $e){
-                
+
             }
         }
 
