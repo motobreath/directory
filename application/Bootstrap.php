@@ -18,9 +18,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     }
 
     protected function _initEmailConfig() {
-        $config=new Zend_Config_Ini(APPLICATION_PATH . "/configs/db.ini");
-        $config=$config->toArray();
-        $tr= new Zend_Mail_Transport_Smtp("smtptest.ucmerced.edu",$config);
+        $config=new Zend_Config_Ini(APPLICATION_PATH . "/configs/email.ini", APPLICATION_ENV);
+        $host=$config->email->host;
+        $emailConfig = array(
+                    'auth' => $config->email->config->auth,
+                    'username' => $config->email->config->username,
+                    'password' => $config->email->config->password,
+                    'ssl' => $config->email->config->ssl,
+                    'port' => $config->email->config->port
+        );
+
+        $tr= new Zend_Mail_Transport_Smtp($host,$emailConfig);
         Zend_Mail::setDefaultTransport($tr);
 
     }
