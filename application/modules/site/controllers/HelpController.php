@@ -98,6 +98,7 @@ class HelpController extends Zend_Controller_Action
             }
             catch(Exception $e){
                 var_dump($tr->getConnection()->getLog());
+                die();
             }
 
 
