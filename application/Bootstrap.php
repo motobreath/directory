@@ -52,5 +52,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_Registry::set("cache", Zend_Cache::factory("Core", "File", $frontOptions, $backOptions));
     }
 
+    protected function _initDates(){
+        date_default_timezone_set("America/Los_Angeles");
+    }
+
 }
 
