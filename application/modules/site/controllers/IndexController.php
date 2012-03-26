@@ -39,6 +39,7 @@ class IndexController extends Zend_Controller_Action
 
         if($this->getSession()->isMobile){
             $form->setAction("/site/index/results/");
+            $form->setMethod("GET");
         }
         else{
             $form->setAction("/site/index/search/");
