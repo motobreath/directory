@@ -55,11 +55,14 @@ class IndexController extends Zend_Controller_Action
     {
         $searchBy = $this->_getParam("searchBy");
         $searchFor = trim($this->_getParam("searchFor"));
+        /*
         if(empty($searchFor) || empty($searchBy)){
             $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Invalid search options. Please search again.");
             $this->_redirect("/");
             return;
         }
+         * */
+         
         $form=$this->getHelper("FormLoader")->load("Search");
         $form->setAction("/site/index/search/");
 
