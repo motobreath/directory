@@ -36,7 +36,7 @@ class IndexController extends Zend_Controller_Action
     {
         $this->resetSearchSession();
         $form=$this->getHelper("FormLoader")->load("Search");
-        $form->setAction("/site/index/search");
+        $form->setAction("/site/index/search/");
         $this->view->searchForm=$form;
 
     }
