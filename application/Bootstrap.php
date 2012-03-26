@@ -19,7 +19,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     protected function _initEmailConfig() {
         $config=new Zend_Config_Ini(APPLICATION_PATH . "/configs/email.ini", APPLICATION_ENV);
-        $host=$config->email->host;
+        $host=$config->email->config->host;
         $emailConfig = array(
                     'auth' => $config->email->config->auth,
                     'username' => $config->email->config->username,
