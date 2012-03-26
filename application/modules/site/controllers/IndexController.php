@@ -110,7 +110,7 @@ class IndexController extends Zend_Controller_Action
         if ($form->isValid($this->_getAllParams())){
             $searchBy = $this->_getParam("searchBy");
             $searchFor = trim($this->_getParam("searchFor"));
-            $this->_redirect("/site/index/results/searchBy/$searchBy/searchFor/$searchFor");
+            $this->_redirect("/site/index/results/searchBy/$searchBy/searchFor/$searchFor/");
         }
         else{
             foreach($form->getErrors() as $error){
