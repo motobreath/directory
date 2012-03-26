@@ -53,6 +53,7 @@ class IndexController extends Zend_Controller_Action
 
     public function resultsAction()
     {
+        $this->getHelper("layout")->disable();
         $searchBy = $this->_getParam("searchBy");
         $searchFor = trim($this->_getParam("searchFor"));
 
