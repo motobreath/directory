@@ -97,6 +97,7 @@ class HelpController extends Zend_Controller_Action
                 $mail->send();
             }
             catch(Exception $e){
+                $tr=Zend_Mail::getDefaultTransport();
                 var_dump($tr->getConnection()->getLog());
                 die();
             }
