@@ -37,7 +37,7 @@ class IndexController extends Zend_Controller_Action
         $this->resetSearchSession();
         $form=$this->getHelper("FormLoader")->load("Search");
 
-        if($this->getNamespace()->isMobile){
+        if($this->getSession()->isMobile){
             $form->setAction("/site/index/results/");
         }
         else{
