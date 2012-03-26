@@ -18,8 +18,11 @@ class Zend_View_Helper_GetJobTitle
             $dept=$person->getDepartment();
             $jobTitle2=$person->getJobTitle2();
 
-            if(!empty($jobTitle1)) $output.= $jobTitle1;
-            if(!empty($dept)) $output.= " - " . $dept;
+            if(!empty($jobTitle1)){
+                $output.= $jobTitle1;
+                if(!empty($dept)) $output.=  " - ";
+            }
+            if(!empty($dept)) $output.=  $dept;
             if(!empty($jobTitle2)) $output.= "<br />" . $jobTitle2;
 
             if(empty($output)){
