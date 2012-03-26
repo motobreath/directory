@@ -51,7 +51,7 @@ class IndexController extends Zend_Controller_Action
             return;
         }
         $form=$this->getHelper("FormLoader")->load("Search");
-        $form->setAction("/site/index/search");
+        $form->setAction("/site/index/search/");
 
         $this->view->searchResults=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
 
