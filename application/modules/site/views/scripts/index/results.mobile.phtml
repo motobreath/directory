@@ -1,3 +1,4 @@
+<div data-role="page" data-add-back-btn="true" data-back-btn-text="&nbsp;">
 <h1>Search Results</h1>
 <?php if($this->searchResults){ ?>
 <?php echo $this->partialLoop()->setObjectKey("person")->partialLoop("partials/searchListing.mobile.phtml",$this->searchResults); ?>
@@ -6,3 +7,4 @@ else{ ?>
 <div class="errorDiv">No Results Found</div>
 <?php } ?>
 <a href="/site/index/" data-role="button">Search Again</a>
+</div>
