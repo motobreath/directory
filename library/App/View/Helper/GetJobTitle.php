@@ -22,7 +22,7 @@ class Zend_View_Helper_GetJobTitle
                 $output.= $jobTitle1;
                 if(!empty($dept)) $output.=  " - ";
             }
-            if(!empty($dept)) $output.=  "<a href='/site/departments/results/department/$dept'>" . $dept . "</a>";
+            if(!empty($dept)) $output.=  "<a href='/site/departments/results/department/$dept/'>" . $dept . "</a>";
             if(!empty($jobTitle2)) $output.= "<br />" . $jobTitle2;
 
             if(empty($output)){
