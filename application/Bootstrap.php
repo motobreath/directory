@@ -24,7 +24,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                     'auth' => $config->email->config->auth,
                     'username' => $config->email->config->username,
                     'password' => $config->email->config->password,
-                    //'ssl' => $config->email->config->ssl,
+                    'ssl' => $config->email->config->ssl,
                     'port' => $config->email->config->port
         );
 
