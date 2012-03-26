@@ -25,7 +25,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                     'username' => $config->email->config->username,
                     'password' => $config->email->config->password,
                     //'ssl' => $config->email->config->ssl,
-                    //'port' => $config->email->config->port
+                    'port' => $config->email->config->port
         );
 
         $tr= new Zend_Mail_Transport_Smtp($host,$emailConfig);
