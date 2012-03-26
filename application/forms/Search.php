@@ -21,6 +21,7 @@ class Application_Form_Search extends Zend_Form
         $searchBy->addMultiOptions($searchOptions)
                 ->setLabel("Search By:")
                 ->setRequired()
+                ->addErrorMessage("Invalid Search")
                 ->setDecorators(array("Errors","ViewHelper","Label",));
         $this->addElement($searchBy);
 
