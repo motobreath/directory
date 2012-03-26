@@ -93,18 +93,8 @@ class HelpController extends Zend_Controller_Action
             $mail->addTo("cmitchell@ucmerced.edu");
             $mail->setSubject("Request to change information for:" . $this->person->getEmail());
             $mail->setFrom("directory@ucmerced.edu");
+
             $mail->send();
-            /*
-            try{
-
-            }
-            catch(Exception $e){
-                $tr=$mail->getDefaultTransport();
-
-                var_dump();
-                die();
-            }
-            */
 
             $this->view->sent=true;
 
