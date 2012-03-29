@@ -73,6 +73,7 @@ class Application_Model_DirectoryDepartmentMapper {
         if(null===$this->departments){
             //get from session
             $this->departments=$this->getSession()->departments;
+            echo "loaded from session";
 
         }
         if(!$this->departments){
@@ -82,6 +83,7 @@ class Application_Model_DirectoryDepartmentMapper {
             if($this->departments){
                 $this->getSession()->departments=$this->departments;
             }
+            echo "loaded from cache";
 
         }
         if(!$this->departments){
@@ -103,6 +105,7 @@ class Application_Model_DirectoryDepartmentMapper {
             //cache these
             $this->cache->save($results,"departments");
             $this->departments=$results;
+            echo "loaded from db";
         }
         return $this->departments;
     }
