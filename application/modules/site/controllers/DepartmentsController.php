@@ -31,6 +31,7 @@ class DepartmentsController extends Zend_Controller_Action
                 ->addActionContext("results","mobile")
                 ->addActionContext("details","mobile")
                 ->initContext();
+        $this->view->pageDataAttributes="data-dom-cache='true'";
 
     }
 
