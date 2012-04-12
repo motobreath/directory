@@ -7,11 +7,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
         <link rel="stylesheet" href="/css/mobile.css" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile-1.1.0-rc.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script src="/js/mobile.js"></script>
+        <script src="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile-1.1.0-rc.2.min.js"></script>
+
+
+
+
 
         <?php echo $this->headLink();?>
         <?php echo $this->headStyle();?>
@@ -20,13 +25,13 @@
     </head>
     <body>
         <div data-role="page" data-add-back-btn="true" data-back-btn-text="&nbsp;" <?php if(isset($this->pageDataAttributes)) echo $this->pageDataAttributes?>>
-            <div data-role="header" data-theme="b" class="hdr"></div><!-- /header -->
+            <div data-role="header" data-theme="b" data-position="fixed"><span class="hdrImg"><img src="/images/mobile/logo.png" alt="UC Merced Directory" /></span></div>
 
             <div data-role="content">
                 <?php echo $this->layout()->content; ?>
             </div>
 
-            <div data-role="footer" data-theme="b">
+            <div data-role="footer" data-theme="b" data-position="fixed">
                 <div data-role="controlgroup" data-type="horizontal">
                     <a href="/site/index/" class="people border-right">People</a>
                     <a href="/site/departments/" class="departments">Departments</a>

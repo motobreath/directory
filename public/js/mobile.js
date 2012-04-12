@@ -1,6 +1,7 @@
 $(document).bind("mobileinit", function() {
     // depreciated... $.mobile.touchOverflowEnabled = true;
     $.mobile.allowCrossDomainPages = true;
+    $.mobile.defaultPageTransition="slide";
 });
 $(function(){
     $(".sendContactForm").live("submit",(function(){

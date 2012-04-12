@@ -1,8 +1,6 @@
 .ui-content{
     color:#2F3E46;
-    margin-top:35px;
     line-height:17pt;
-    margin-bottom:60px;
 }
 
 .ui-content h1, h2, h3{
@@ -30,28 +28,12 @@
 
 }
 
-.hdr{
-    height:40px;
-    background-image: url(/images/mobile/logo.png);
-    background-position:50% 50%;
-    background-repeat: no-repeat;
-    position:fixed !important;
-    top:0;
-    left:0;
-    z-index: 1000
+span.hdrImg{
+    width:179px;
+    margin:6px auto 0;
+    display:block;
 }
 
-.ui-footer{
-    height:50px;
-    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.5);
-    text-align:center;
-    width:100%;
-    position:fixed !important;
-    bottom:0;
-    left:0;
-    z-index: 1000;
-
-}
 .ui-footer a{
     width:33%;
     height:22px;
