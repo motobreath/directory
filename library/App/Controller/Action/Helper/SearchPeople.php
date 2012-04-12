@@ -104,7 +104,7 @@ class App_Controller_Action_Helper_SearchPeople
                ->setJobTitle($this->ldap->getItem($entry, "ucmercededuappttitle1"))
                ->setJobTitle2($this->ldap->getItem($entry, "ucmercededuappttitle2"))
                ->setDepartment($this->ldap->getItem($entry, "ucmercededuapptdeptname1"))
-               ->setLocation($this->ldap->getItem($entry, "l"))
+               ->setLocation($this->ldap->getItem($entry, "roomnumber"))
                ->setFERPAFlag(($this->ldap->getItem($entry, "ucmercededuferpa") == "1" ? true : false))
                ->setDirectoryFlag(($this->ldap->getItem($entry, "ucmercededuonlinedir") == "1" ? true : false))
                ->setPublishCellFlag(($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? true : false))

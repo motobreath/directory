@@ -46,7 +46,8 @@ class HelpController extends Zend_Controller_Action
             "department"=>$this->person->getDepartment(),
             "phone"=>$this->person->getPhone(),
             "fax"=>$this->person->getFax(),
-            "mobile"=>$this->person->getCellPhone()
+            "mobile"=>$this->person->getCellPhone(),
+            "location"=>$this->person->getLocation()
         );
         $form=new Application_Form_Update();
         $form->populate($options);
@@ -86,6 +87,9 @@ class HelpController extends Zend_Controller_Action
             $msg.="Mobile:<br />
                    Currently: " . $this->person->getCellPhone() . "<br />
                    Requested: " . $this->_getParam("mobile") . "<br /><br />";
+            $msg.="Location:<br />
+                   Currently: " . $this->person->getLocation() . "<br />
+                   Requested: " . $this->_getParam("location") . "<br /><br />";
             $msg.="Comments:" . $this->_getParam("comments");
 
             $mail->setBodyHtml($msg);

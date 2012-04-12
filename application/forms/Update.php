@@ -56,6 +56,10 @@ class Application_Form_Update extends Zend_Form
         $mobile->setLabel("Mobile: ")->setDecorators(array("ViewHelper","Label",array("HtmlTag",array("tag"=>"br","openOnly"=>true))));
         $this->addElement($mobile);
 
+        $location=new Zend_Form_Element_Text("location");
+        $location->setLabel("Location: ")->setDecorators(array("ViewHelper","Label",array("HtmlTag",array("tag"=>"br","openOnly"=>true))));
+        $this->addElement($location);
+
         $mso=new Zend_Form_Element_Select("mso");
         $mso->setMultiOptions($this->getMSO())
                 ->setLabel("MSO:")
