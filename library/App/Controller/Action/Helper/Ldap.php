@@ -67,14 +67,14 @@ class App_Controller_Action_Helper_Ldap
         if(null===$basedn){
             $basedn=$this->getBasedn();
         }
-        $sort=array("sn","givenName");
+        //$sort=array("sn","givenName");
         // $collection is a Zend_Ldap_Collection
         $collection = $this->getLdapConnection()->search(
             $filter,	// filter
             $basedn, 				// basedn
             Zend_Ldap::SEARCH_SCOPE_ONE, 	// scope
             array("*"),				// attributes
-            $sort                             //sort
+            $order                             //sort
         );
         return $collection;
 

@@ -65,8 +65,16 @@ class IndexController extends Zend_Controller_Action
 
         $form=$this->getHelper("FormLoader")->load("Search");
         $form->setAction("/site/index/search/");
+        $form->populate($this->_getAllParams());
 
         $this->view->searchResults=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
+
+        //if searched for a department and has search results
+        //show department details as well
+        if($searchBy=="department"){
+            $deptMapper=new Application_Model_DirectoryDepartmentMapper();
+            $this->view->department=$deptMapper->find($searchFor);
+        }
 
         $this->view->searchForm=$form;
         $this->view->searchFor=$searchFor;

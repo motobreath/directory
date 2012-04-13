@@ -7,6 +7,9 @@
     <article>
         <a href="/site/print/pdf/people/<?php echo $this->searchFor?>/search/<?php echo $this->searchBy?>" target="_blank"><img src="/images/print-to-pdf-60x43.png" class="pdf" /></a>
         <h1>Search Results for <?php echo $this->searchFor?></h1>
+        <?php if($this->department){
+            echo $this->partial("partials/DeptHighlight.phtml",array("department"=>$this->department));
+        } ?>
         <?php if($this->searchResults){ ?>
         <ul class="searchResults">
             <?php echo $this->partialLoop()->setObjectKey('person')

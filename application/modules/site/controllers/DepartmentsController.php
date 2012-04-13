@@ -62,7 +62,7 @@ class DepartmentsController extends Zend_Controller_Action
         $dept=$this->getDepartmentMapper()->find($dept);
 
         if(!$dept){
-            $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Invalid search options. Please search again.");
+            $this->flashMessenger->setNamespace("directoryErrors")->addMessage("No information was found for " . $this->_getParam("department") . ".");
             $this->_redirect("/site/departments");
             return;
         }

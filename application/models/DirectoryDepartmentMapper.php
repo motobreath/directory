@@ -56,11 +56,11 @@ class Application_Model_DirectoryDepartmentMapper {
      */
     public function find($name){
         $departments=$this->getDepartments();
-        if(isset($departments[$name])){
-            return $departments[$name];
+        if(isset($departments[ucwords($name)])){
+            return $departments[ucwords($name)];
         }
         else{
-            throw new Exception("Department not found", 500);
+            return false;
         }
     }
 
