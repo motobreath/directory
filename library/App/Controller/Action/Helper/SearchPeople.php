@@ -108,7 +108,7 @@ class App_Controller_Action_Helper_SearchPeople
                ->setFERPAFlag(($this->ldap->getItem($entry, "ucmercededuferpa") == "1" ? true : false))
                ->setDirectoryFlag(($this->ldap->getItem($entry, "ucmercededuonlinedir") == "1" ? true : false))
                ->setPublishCellFlag(($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? true : false))
-               ->setCellPhone($this->ldap->getItem($entry, "mobile"))
+               ->setCellPhone($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? $this->ldap->getItem($entry, "mobile") : "")
                ->setPrimaryAffiliation($this->ldap->getItem($entry, "edupersonprimaryaffiliation"))
                ->setSubAffiliation($this->ldap->getItem($entry, "ucmercededuaffiliationsubtype"));
 
