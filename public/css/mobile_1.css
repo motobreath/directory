@@ -1,0 +1,190 @@
+.ui-content{
+    color:#2F3E46;
+    line-height:17pt;
+}
+
+.ui-content h1, h2, h3{
+    font-size:14pt;
+    padding:5px 0;
+    margin:0;
+}
+
+.ui-content h4, h5, h6{
+    font-size:12pt;
+    padding:5px 0;
+    margin:0;
+}
+
+.ui-content ul{
+    margin:8px 0;
+}
+
+.innerContentItem{
+    background-color:#fff;
+    padding:10px 12px;
+    margin:1em 0;
+}
+.innerContentItem.ui-corner-all{
+
+}
+
+span.hdrImg{
+    width:179px;
+    margin:6px auto 0;
+    display:block;
+}
+
+.ui-footer a{
+    width:33%;
+    height:22px;
+    padding-top:28px;
+    float:left;
+    background-repeat: no-repeat;
+    background-position:50% -3px;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    font-size:10pt;
+    text-decoration:none;
+    text-shadow: 0 1px 1px #000000;
+    text-align: center;
+    display:block;
+}
+
+
+.ui-footer .ui-controlgroup{
+    margin:0;
+    background-image:url(/images/mobile/borderpx.png);
+    background-repeat: repeat-y;
+    background-position: 50%;
+}
+
+/*
+//Pay attention! the images for the iphone and any other high res screen
+must be double the pixels. so here, we would put a copy of regular images
+for other phones, using same images for now to avoid duplicates during dev*/
+.ui-footer a.people {
+     background-image: url(/images/mobile/peopleFtrIcon.png);
+     width:32.5%;
+     border-right:1px solid #456f9a;
+
+}
+.ui-footer a.departments {
+     background-image: url(/images/mobile/departmentsFtrIcon.png);
+     width:32.5%;
+     border-right:1px solid #456f9a;
+}
+.ui-footer a.help {
+     background-image: url(/images/mobile/helpFtrIcon.png);
+}
+
+
+#searchForm{
+}
+
+#searchForm br{
+
+}
+
+#searchForm .submit{
+    margin-top:1em;
+}
+/*
+#searchForm label{
+ display: block;
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 19px 0 0.3em;
+    width:100px;
+}
+
+div.ui-select{
+    width:300px;
+}
+
+#searchForm input{
+    margin-top:20px;
+    width:175px !important;
+}
+
+#searchForm div.submit{
+    margin-top:30px;
+}
+*/
+
+.errorDiv{
+    padding-top:10px;
+    clear:both;
+    color:#ff0000;
+}
+
+#leaveMobile{
+    clear:both;
+    padding-top:20px;
+    text-align:center;
+}
+
+p.searchResults{
+    padding:0;
+    margin:3px 0;
+    line-height:20pt;
+}
+
+span.email,span.phone,span.fax,span.mobile,span.location,span.url{
+    background-image:url(/images/icons.png);
+    background-repeat:no-repeat;
+    padding-left:22px;
+    display: inline-block;
+}
+
+span.email{
+    background-position: 0 -21px;
+
+}
+span.phone{
+    background-position: 0 -78px;
+    width: 55px;
+}
+span.fax{
+    background-position: 0 6px;
+    width: 55px;
+}
+span.mobile{
+    background-position: 0 -48px;
+    width: 55px;
+}
+
+span.location{
+    background-position: 0 -138px;
+    width: 55px;
+}
+span.url{
+    background-position: 0 -166px;
+}
+
+p.deptLinks{
+    line-height:20pt;
+}
+
+.error{
+    color:#ff0000;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-footer a.people {
+         background-image: url(/images/mobile/peopleFtrIcon-retna.png);
+         background-size:40px 40px;
+    }
+    .ui-footer a.departments {
+        background-image: url(/images/mobile/departmentsFtrIcon-retna.png);
+        background-size:40px 40px;
+    }
+    .ui-footer a.help {
+        background-image: url(/images/mobile/helpFtrIcon-retna.png);
+        background-size:40px 40px;
+    }
+    .hdr{
+        background-image: url(/images/mobile/logo-retna.png);
+        background-size:179px 30px;
+    }
+}
