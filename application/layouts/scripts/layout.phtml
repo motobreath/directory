@@ -11,19 +11,12 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+	<link type="text/css" rel="stylesheet" href="/min/f=css/style.css" />
 
-	<link rel="stylesheet" href="/css/style.css">
-
-        <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
-        <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
-	<script src="/js/libs/modernizr-2.0.6.min.js"></script>
-        <script src="/js/script.js"></script>
         <?php echo $this->headLink();?>
         <?php echo $this->headStyle();?>
-        <?php echo $this->headScript();?>
+
 </head>
 <body>
 
@@ -42,6 +35,10 @@
             University of California, Merced | 5200 North Lake Rd, Merced, CA 95343 | (209) 228-4400 | &copy; <?php echo date("Y");?> UC Regents
             &nbsp; - &nbsp;<a href="http://www.ucmerced.edu/privacy-statement" target="_blank">Privacy/Legal Notice</a>
 	</footer>
+        <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+         <?php echo $this->headScript();?>
+        <script type="text/javascript" src="/min/f=js/script.js"></script>
         <script type="text/javascript">
 
           var _gaq = _gaq || [];

@@ -7,7 +7,7 @@ class Application_Form_Search extends Zend_Form
     {
         $this->setAttrib("id","searchForm");
         $this->setDecorators(array('FormElements','Form'));
-        $this->getView()->headScript()->appendFile("/js/validate.js");
+        $this->getView()->headScript()->appendFile("/min/f=js/validate.js");
 
         $searchOptions=array(
             'lastName' => 'Last Name (automatic wildcard at the end)',
