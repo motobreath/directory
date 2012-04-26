@@ -13,9 +13,6 @@ class Application_Model_DirectoryPerson
     public $jobTitle2;
     public $department;
     public $location;
-    public $ferpaFlag;
-    public $directoryFlag;
-    public $publishCellFlag;
     public $cellPhone;
     public $primaryAffiliation;
     public $subAffiliation;
@@ -169,36 +166,6 @@ class Application_Model_DirectoryPerson
     public function getLocation()
     {
       return $this->location;
-    }
-
-    public function setFERPAFlag($ferpaFlag)
-    {
-      $this->ferpaFlag = (string) $ferpaFlag;
-      return $this;
-    }
-    public function getFERPAFlag()
-    {
-      return $this->ferpaFlag;
-    }
-
-    public function setDirectoryFlag($directoryFlag)
-    {
-      $this->directoryFlag = (string) $directoryFlag;
-      return $this;
-    }
-    public function getDirectoryFlag()
-    {
-      return $this->directoryFlag;
-    }
-
-    public function setPublishCellFlag($publishCellFlag)
-    {
-      $this->publishCellFlag = (string) $publishCellFlag;
-      return $this;
-    }
-    public function getPublishCellFlag()
-    {
-      return $this->publishCellFlag;
     }
 
     public function setCellPhone($cellPhone)

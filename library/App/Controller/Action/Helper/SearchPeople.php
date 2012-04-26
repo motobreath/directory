@@ -52,7 +52,7 @@ class App_Controller_Action_Helper_SearchPeople
         //NOTE: replace "-" with " " for best results
         if($ldapAttribute=="telephoneNumber"){
             $searchFor=str_replace("-"," ", $searchFor);
-            $filter="(&(|(telephonenumber=*$searchFor*)(mobile=*$searchFor*))(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
+            $filter="(&(|(telephonenumber=*$searchFor*)(mobile=*$searchFor*))(ucmercededuonlinedir=1)(ucmercededuferpa=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
         }
         else{
             $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
@@ -63,10 +63,11 @@ class App_Controller_Action_Helper_SearchPeople
         $results=array();
 
         foreach($entries as $entry){
-
-            $person = new Application_Model_DirectoryPerson();
-            $this->populatePerson($person,$entry);
-            $results[]=$person;
+            if($this->ldap->getItem($entry, "ucmercededuferpa")!="1"){
+                $person = new Application_Model_DirectoryPerson();
+                $this->populatePerson($person,$entry);
+                $results[]=$person;
+            }
 
         }
 
@@ -105,9 +106,6 @@ class App_Controller_Action_Helper_SearchPeople
                ->setJobTitle2($this->ldap->getItem($entry, "ucmercededuappttitle2"))
                ->setDepartment($this->ldap->getItem($entry, "ucmercededuapptdeptname1"))
                ->setLocation($this->ldap->getItem($entry, "roomnumber"))
-               ->setFERPAFlag(($this->ldap->getItem($entry, "ucmercededuferpa") == "1" ? true : false))
-               ->setDirectoryFlag(($this->ldap->getItem($entry, "ucmercededuonlinedir") == "1" ? true : false))
-               ->setPublishCellFlag(($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? true : false))
                ->setCellPhone($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? $this->ldap->getItem($entry, "mobile") : "")
                ->setPrimaryAffiliation($this->ldap->getItem($entry, "edupersonprimaryaffiliation"))
                ->setSubAffiliation($this->ldap->getItem($entry, "ucmercededuaffiliationsubtype"));

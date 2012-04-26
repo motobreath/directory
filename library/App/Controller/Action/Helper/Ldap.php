@@ -73,7 +73,7 @@ class App_Controller_Action_Helper_Ldap
             $filter,	// filter
             $basedn, 				// basedn
             Zend_Ldap::SEARCH_SCOPE_ONE, 	// scope
-            array("*"),				// attributes
+            $this->getAttributes(),             // attributes
             $order                             //sort
         );
         return $collection;
@@ -153,6 +153,25 @@ class App_Controller_Action_Helper_Ldap
 
     public function setBasedn($basedn) {
         $this->basedn = $basedn;
+    }
+
+    private function getAttributes(){
+        return array(
+            "ucmercededuidmid",
+            "uid",
+            "givenname",
+            "sn",
+            "mail",
+            "telephonenumber",
+            "facsimiletelephonenumber",
+            "ucmercededuappttitle1",
+            "ucmercededuappttitle2",
+            "ucmercededuapptdeptname1",
+            "roomnumber",
+            "ucmercededupublishcellphonenumber",
+            "edupersonprimaryaffiliation",
+            "ucmercededuaffiliationsubtype"
+            );
     }
 
 }
