@@ -17,7 +17,7 @@ $(function(){
             $("label[for='searchFor']").before("<div class='errorDiv'>Please enter in at least 2 characters</div>");
             return false;
         }
-
+        $("#searchForm .loading").show();
         return true;
     })
 

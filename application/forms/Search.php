@@ -7,7 +7,7 @@ class Application_Form_Search extends Zend_Form
     {
         $this->setAttrib("id","searchForm");
         $this->setDecorators(array('FormElements','Form'));
-        $this->getView()->headScript()->appendFile("/min/f=js/validate.js");
+        //$this->getView()->headScript()->appendFile("/min/f=js/validate.js");
 
         $searchOptions=array(
             'lastName' => 'Last Name (automatic wildcard at the end)',
@@ -22,7 +22,7 @@ class Application_Form_Search extends Zend_Form
                 ->setLabel("Search By:")
                 ->setRequired()
                 ->addErrorMessage("Invalid Search")
-                ->setDecorators(array("Errors","ViewHelper","Label",));
+                ->setDecorators(array("Errors","ViewHelper","Label",array("HtmlTag",array("tag"=>"<img>","class"=>"loading","src"=>"/images/loading.gif","openOnly"=>true))));
         $this->addElement($searchBy);
 
         $searchFor=new Zend_Form_Element_Text("searchFor");

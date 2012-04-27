@@ -582,6 +582,18 @@ img.pdf{
     font-style: italic;
 }
 
+#searchForm{
+    position:relative;
+
+}
+
+#searchForm .loading{
+    left: 237px;
+    top: 30px;
+    position: absolute;
+    display:none;
+}
+
 /* =============================================================================
     Form Styles
    ===========================================================================*/
