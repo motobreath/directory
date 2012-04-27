@@ -169,6 +169,7 @@ class App_Controller_Action_Helper_Ldap
             "ucmercededuapptdeptname1",
             "roomnumber",
             "ucmercededupublishcellphonenumber",
+            "mobile",
             "edupersonprimaryaffiliation",
             "ucmercededuaffiliationsubtype"
             );
