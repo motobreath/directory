@@ -24,7 +24,6 @@ class Application_Form_SMS
     public function init(){
         $this->setAttrib("id","smsForm");
         $this->setDecorators(array('FormElements','Form'));
-        $this->getView()->headScript()->appendFile("/js/validate.js");
 
         $validate=new Zend_Validate_Regex(array(
            "pattern"=>"/^[2-9]\d{2}-\d{3}-\d{4}$/",

@@ -1,0 +1,24 @@
+<h3><?php echo $this->person->getFullName()?></h3>
+    <p class="searchResults">
+        <?php echo  $this->getJobTitle($this->person);?><br />
+        <?php if(!empty($this->person->email)) echo "<span class='email'><a href='mailto:" . $this->person->email . "'>" . $this->person->email . "</a></span><br />"?>
+        <?php if($this->person->getPrimaryAffiliation()!="student"){ ?>
+            <?php if(!empty($this->person->phone)) echo "<span class='phone'>Phone:</span><a href='tel://1" . $this->person->phone . "'>" . $this->phoneFormat($this->person->phone) . "</a><br />"?>
+            <?php if(!empty($this->person->fax)) echo "<span class='fax'>Fax:</span>" . $this->phoneFormat($this->person->fax) . "<br />"?>
+            <?php if(!empty($this->person->cellPhone)) echo "<span class='mobile'>Mobile:</span><a href='tel://1" . $this->phoneFormat($this->person->cellPhone) . "'>" . $this->phoneFormat($this->person->cellPhone) . "</a>"?>
+        <?php } ?>
+    </p>
+    <div data-role="collapsible" data-iconpos="right" data-content-theme="c" style="padding-top:10px;">
+        <h3>Download Contact</h3>
+        <p>Enter an email address accessible by your phone and we'll send this contact to you.</p>
+        <form action="/site/email/sendcontact" method="post" class="sendContactForm" name="sendContact<?php echo $this->partialCounter?>" data-ajax="false">
+            <label>Email:</label>
+            <input type="hidden" name="email" class="email" value="<?php echo $this->person->getEmail()?>" />
+            <input type="text" name="sendTo" class="sendTo" />
+            <input type="submit" name="submit" value="Go" />
+        </form>
+    </div>
+    <ul data-inset="true" data-role="listview">
+        <li><a href="/index/results?searchBy=<?php echo $this->searchBy?>&searchFor=<?php echo $this->searchFor?>" data-rel="back">Return</a></li>
+        <li><a href="/site/index/" data-transition="reverse slide">New Search</a></li>
+    </ul>

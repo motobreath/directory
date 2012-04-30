@@ -13,9 +13,11 @@
     </p>
 </div>
     <h2>Search Results for <?php echo $this->department->getName()?></h2>
-    <?php echo $this->partialLoop()->setObjectKey('person')
-            ->partialLoop("partials/searchListing.mobile.phtml",$this->searchResults) ?>
-
+    <ul data-inset="true" data-role="listview">
+    <?php foreach($this->searchResults as $person){ ?>
+        <li><a href="/index/details/email/<?php echo $person->getEmail()?>"><?php echo $person->getLastName() . ", " . $person->getFirstName()?></a></li>
+    <?php } ?>
+    </ul>
 <?php }
     else{ ?>
     <div class="innerContentItem ui-corner-all ui-shadow">

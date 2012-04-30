@@ -1,6 +1,13 @@
+<?php echo $this->displayErrors() ?>
+
 <h1>Search Results</h1>
+
 <?php if($this->searchResults){ ?>
-<?php echo $this->partialLoop()->setObjectKey("person")->partialLoop("partials/searchListing.mobile.phtml",$this->searchResults); ?>
+<ul data-inset="true" data-role="listview">
+    <?php foreach($this->searchResults as $person){ ?>
+        <li><a href="/index/details/email/<?php echo $person->getEmail()?>"><?php echo $person->getLastName() . ", " . $person->getFirstName()?></a></li>
+    <?php } ?>
+</ul>
 <?php }
 else{ ?>
 <div class="errorDiv">No Results Found</div>

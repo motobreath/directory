@@ -29,6 +29,7 @@ class IndexController extends Zend_Controller_Action
         $this->_helper->contextSwitch()
                 ->addActionContext("index","mobile")
                 ->addActionContext("results","mobile")
+                ->addActionContext("details","mobile")
                 ->initContext();
     }
 
@@ -87,10 +88,12 @@ class IndexController extends Zend_Controller_Action
     public function detailsAction()
     {
         $email=$this->_getParam("email");
-        $person=$this->getHelper("SearchPeople")->getPerson($email);
-        if(!$person){
+        if(empty($email)){
             $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Person not found. Please search again.");
+            //$this->_redirect("/");
         }
+        $person=$this->getHelper("SearchPeople")->getPerson($email);
+
         $form=$this->getHelper("FormLoader")->load("SMS");
         if($this->getRequest()->isPost()){
             $this->view->submitted=true;
