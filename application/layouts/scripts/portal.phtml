@@ -11,30 +11,16 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-	<link type="text/css" rel="stylesheet" href="/min/f=css/style_1.css" />
-
-        <?php echo $this->headLink();?>
-        <?php echo $this->headStyle();?>
-
 </head>
 <body>
-
+<link type="text/css" rel="stylesheet" href="/min/f=css/style_1.css" />
+<?php echo $this->headLink();?>
+<?php echo $this->headStyle();?>
 <div id="container">
-	<header>
-            <nav>
-                <a href="/" <?php if($this->page=="people") echo "class='active'"?>>People</a>
-                <a href="/site/departments" <?php if($this->page=="dept") echo "class='active'"?>>Departments</a>
-                <a href="http://www.ucmerced.edu" target="_blank">UC Merced Home</a>
-            </nav>
-	</header>
+
 	<div id="main" role="main">
             <?php echo $this->layout()->content; ?>
 	</div>
-	<footer>
-            University of California, Merced | 5200 North Lake Rd, Merced, CA 95343 | (209) 228-4400 | &copy; <?php echo date("Y");?> UC Regents
-            &nbsp; - &nbsp;<a href="http://www.ucmerced.edu/privacy-statement" target="_blank">Privacy/Legal Notice</a>
-	</footer>
         <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
         <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
          <?php echo $this->headScript();?>
@@ -43,7 +29,7 @@
 
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-30657753-1']);
-          _gaq.push(['_setCustomVar', 1, 'View', 'Desktop', 2]);
+          _gaq.push(['_setCustomVar', 1, 'View', 'Portal', 2]);
           _gaq.push(['_trackPageview']);
 
           (function() {

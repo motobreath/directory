@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Handles requests for leaving and going to mobile site
+ */
 class RedirectController extends Zend_Controller_Action
 {
 
@@ -21,12 +23,14 @@ class RedirectController extends Zend_Controller_Action
 
     public function mobileAction(){
         $this->getNamespace()->isMobile=true;
+        $this->getNamespace()->isDesktop=false;
         $this->_redirect("/");
     }
 
     public function leavemobileAction()
     {
         $this->getNamespace()->isMobile=false;
+        $this->getNamespace()->isDesktop=true;
         $this->_redirect("/");
     }
 

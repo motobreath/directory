@@ -6,11 +6,11 @@
 
         <?php //Only show Email if student ?>
         <?php if($this->person->getPrimaryAffiliation()=="student"){?>
-            <span class="email detail">Email:</span><a href="mailto:"<?php echo $this->person->getEmail()?>"><?php echo $this->person->getEmail()?></a>
+            <span class="email detail">Email:</span><a href="mailto:"<?php echo $this->person->getEmail()?>"><?php echo str_replace ("@", " [at] ", $this->person->email)?></a>
         <?php }
         //else show all info
         else{ ?>
-            <?php if(!empty($this->person->email)) echo "<span class='email detail'>Email:</span><a href='mailto:" . $this->person->email . "'>" . $this->person->email . "</a><br />"?>
+            <?php if(!empty($this->person->email)) echo "<span class='email detail'>Email:</span><a href='mailto:" . $this->person->email . "'>" . str_replace ("@", " [at] ", $this->person->email) . "</a><br />"?>
             <?php if(!empty($this->person->phone)) echo "<span class='phone detail'>Phone:</span>" . $this->phoneFormat($this->person->phone) . "<br />"?>
             <?php if(!empty($this->person->fax)) echo "<span class='fax detail'>Fax:</span>" . $this->phoneFormat($this->person->fax) . "<br />"?>
             <?php if(!empty($this->person->cellPhone)) echo "<span class='mobile detail'>Mobile:</span>" . $this->phoneFormat($this->person->cellPhone) . "<br />"?>
