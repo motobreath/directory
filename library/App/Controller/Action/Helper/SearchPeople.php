@@ -52,12 +52,11 @@ class App_Controller_Action_Helper_SearchPeople
         //NOTE: replace "-" with " " for best results
         if($ldapAttribute=="telephoneNumber"){
             $searchFor=str_replace("-"," ", $searchFor);
-            $filter="(&(|(telephonenumber=*$searchFor*)(mobile=*$searchFor*))(ucmercededuonlinedir=1)(ucmercededuferpa=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
+            $filter="(&(|(telephonenumber=*$searchFor*)(mobile=*$searchFor*))(ucmercededuonlinedir=1)(!(ucmercededuferpa=0))(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
         }
         else{
             $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
         }
-
         $entries=$this->ldap->search($filter,null,$order);
         $entries=$entries->toArray();
         $results=array();
