@@ -28,6 +28,23 @@ class ErrorController extends Zend_Controller_Action
                 $priority = Zend_Log::CRIT;
                 $this->view->h1Message="Application Error, but don't worry it's not your fault.";
                 $this->view->message = "Something happend there, give us one second and we'll have things back up. <br />Please <a href='/'>Return Home</a> and try again";
+
+                //send mail, only when not in dev, too many emails!
+                if(APPLICATION_ENV=="production"){
+                    try{
+                        $params=var_export($errors->request->getParams(),true);
+                        $mail=new Zend_Mail();
+                        $mail->addTo("cmitchell@ucmerced.edu");
+                        $mail->setSubject("Directory Error");
+                        $mail->setBodyHtml("<h1>Exception:</h1>" . $errors->exception);
+                        $mail->setFrom("directory@ucmerced.edu");
+                        $mail->send();
+                    }
+                    catch(Exception $e){
+                        $log->log($e, $priority, $errors->exception);
+                    }
+                }
+
                 break;
         }
 
@@ -42,21 +59,6 @@ class ErrorController extends Zend_Controller_Action
             $this->view->exception = $errors->exception;
         }
 
-        //send mail, only when not in dev, too many emails!
-        if(APPLICATION_ENV=="production"){
-            try{
-                $params=var_export($errors->request->getParams(),true);
-                $mail=new Zend_Mail();
-                $mail->addTo("cmitchell@ucmerced.edu");
-                $mail->setSubject("Directory Error");
-                $mail->setBodyHtml("<h1>Exception:</h1>" . $errors->exception);
-                $mail->setFrom("directory@ucmerced.edu");
-                $mail->send();
-            }
-            catch(Exception $e){
-                $log->log($e, $priority, $errors->exception);
-            }
-        }
 
         $this->view->request   = $errors->request;
     }
