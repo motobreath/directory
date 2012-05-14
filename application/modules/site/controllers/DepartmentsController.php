@@ -59,6 +59,7 @@ class DepartmentsController extends Zend_Controller_Action
             $this->_redirect("/site/departments");
             return;
         }
+
         $dept=$this->getDepartmentMapper()->find($dept);
 
         if(!$dept){
@@ -78,7 +79,15 @@ class DepartmentsController extends Zend_Controller_Action
 
         $this->view->form=$form;
         $this->view->department=$dept;
-        $this->view->searchResults=$this->getHelper("SearchPeople")->search("ucmercededuapptdeptname1",$dept->getName());
+        $people=$this->getHelper("SearchPeople")->search("ucmercededuapptdeptname1",$dept->getName());
+
+        foreach($people as $key=>$person){
+            $affiliation=$person->getSubAffiliation();
+            if($affiliation=="undergraduate" || $affiliation=="graduate"){
+                unset($people[$key]);
+            }
+        }
+        $this->view->searchResults=$people;
 
     }
 

@@ -409,6 +409,8 @@ span.email,span.phone,span.fax,span.mobile,span.location,span.url{
 
 span.email{
     background-position: 0 -21px;
+    height: 21px;
+    text-overflow: ellipsis;
 
 }
 span.phone{

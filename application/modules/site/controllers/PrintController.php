@@ -42,7 +42,7 @@ class PrintController extends Zend_Controller_Action
                     $this->view->searchBy="Full Name";
                     break;
                 case "department":
-                    $this->view->searchBy="Last Name";
+                    $this->view->searchBy="Department";
                     break;
                 case "email":
                     $this->view->searchBy="Email";
@@ -55,7 +55,18 @@ class PrintController extends Zend_Controller_Action
             }
 
         }
-        $this->view->searchResults=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
+        $people=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
+        if($searchBy=="ucmercededuapptdeptname1"){
+            foreach($people as $key=>$person){
+                $affiliation=$person->getSubAffiliation();
+                $affiliation=strtolower($affiliation);
+                if($affiliation=="undergraduate" || $affiliation=="graduate"){
+                    unset($people[$key]);
+                }
+            }
+        }
+
+        $this->view->searchResults=$people;
         $view=$this->view=Zend_Controller_Front::getInstance()->getParam('bootstrap')->getResource('view');
         $html=$view->render("print/pdf.phtml");
 

@@ -57,7 +57,7 @@ class App_Controller_Action_Helper_SearchPeople
         else{
             $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
         }
-        
+
         $entries=$this->ldap->search($filter,null,$order);
         $entries=$entries->toArray();
         $results=array();
@@ -109,6 +109,12 @@ class App_Controller_Action_Helper_SearchPeople
                ->setCellPhone($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? $this->ldap->getItem($entry, "mobile") : "")
                ->setPrimaryAffiliation($this->ldap->getItem($entry, "edupersonprimaryaffiliation"))
                ->setSubAffiliation($this->ldap->getItem($entry, "ucmercededuaffiliationsubtype"));
+        $affiliation=$person->getSubAffiliation();
+        if($affiliation=="graduate" || $affiliation=="undergraduate"){
+            $person->setPhone("");
+            $person->setCellPhone("");
+            $person->setFax("");
+        }
 
     }
 

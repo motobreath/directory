@@ -86,7 +86,7 @@ class Application_Form_Update extends Zend_Form
             "speterson@ucmerced.edu"=>"Academic Resource Center - Stephanie Peterson",
             "speterson@ucmerced.edu"=>"Academic Personnel - Stephanie Peterson",
             "pjohnston@ucmerced.edu"=>"Academic Senate - Phil Johnston",
-            "jcisneros4@ucmerced.edu"=>"Accounting (BFS) - Jennifer Cisneros",
+            "jmartin22@ucmerced.edu"=>"Accounting (BFS) - Jason Martin",
             "kunruh@ucmerced.edu"=>"Administration - Katie Unruh",
             "kbonilla@ucmerced.edu"=>"Admissions - Karen Bonilla",
             "edarrah@ucmerced.edu"=>"Bookstore - Elaine Darrah",
