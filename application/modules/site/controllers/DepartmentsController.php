@@ -82,8 +82,8 @@ class DepartmentsController extends Zend_Controller_Action
         $people=$this->getHelper("SearchPeople")->search("ucmercededuapptdeptname1",$dept->getName());
 
         foreach($people as $key=>$person){
-            $affiliation=$person->getSubAffiliation();
-            if($affiliation=="undergraduate" || $affiliation=="graduate"){
+            $affiliation=$person->getPrimaryAffiliation();
+            if($affiliation=="student"){
                 unset($people[$key]);
             }
         }

@@ -56,15 +56,19 @@ class PrintController extends Zend_Controller_Action
 
         }
         $people=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
-        if($searchBy=="ucmercededuapptdeptname1"){
-            foreach($people as $key=>$person){
-                $affiliation=$person->getSubAffiliation();
-                $affiliation=strtolower($affiliation);
-                if($affiliation=="undergraduate" || $affiliation=="graduate"){
+        foreach($people as $key=>$person){
+            //filter out some data based on search
+            //if dept, only show staff not students
+            if($searchBy=="ucmercededuapptdeptname1"){
+                $affiliation=$person->getPrimaryAffiliation();
+                if($affiliation=="student"){
                     unset($people[$key]);
                 }
             }
+            //add additional search options here, i.e if you would like to
+            //filter out by addiotnal params put them here
         }
+        if($searchBy)
 
         $this->view->searchResults=$people;
         $view=$this->view=Zend_Controller_Front::getInstance()->getParam('bootstrap')->getResource('view');

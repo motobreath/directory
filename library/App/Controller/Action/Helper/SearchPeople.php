@@ -109,8 +109,8 @@ class App_Controller_Action_Helper_SearchPeople
                ->setCellPhone($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? $this->ldap->getItem($entry, "mobile") : "")
                ->setPrimaryAffiliation($this->ldap->getItem($entry, "edupersonprimaryaffiliation"))
                ->setSubAffiliation($this->ldap->getItem($entry, "ucmercededuaffiliationsubtype"));
-        $affiliation=$person->getSubAffiliation();
-        if($affiliation=="graduate" || $affiliation=="undergraduate"){
+        $affiliation=$person->getPrimaryAffiliation();
+        if($affiliation=="student"){
             $person->setPhone("");
             $person->setCellPhone("");
             $person->setFax("");
