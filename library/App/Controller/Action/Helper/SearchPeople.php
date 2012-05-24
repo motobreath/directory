@@ -38,7 +38,7 @@ class App_Controller_Action_Helper_SearchPeople
         $searchFor=$this->ldap->escapeValue($searchFor);
 
         //add wildcard for firstname, last name, email
-        if($ldapAttribute=="sn" || $ldapAttribute=="givenName" || $ldapAttribute=="mail"){
+        if($ldapAttribute=="sn" || $ldapAttribute=="givenName" || $ldapAttribute=="mail" || $ldapAttribute=="ucMercedEduApptDeptName1"){
             $searchFor.="*";
         }
 
@@ -46,7 +46,7 @@ class App_Controller_Action_Helper_SearchPeople
         //sorty on first name
         $order="sn";
         if($ldapAttribute=="sn"){
-            $order="givenName";
+            $order="givenName, sn";
         }
         //special search for telephone:
         //NOTE: replace "-" with " " for best results
