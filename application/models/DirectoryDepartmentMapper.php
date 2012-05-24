@@ -55,11 +55,11 @@ class Application_Model_DirectoryDepartmentMapper {
      * @return Application_Model_DirectoryDepartment
      */
     public function find($name){
-        
+
         $departments=$this->getDepartments();
         $departments=array_change_key_case($departments);
-
-        if($department=$departments[strtolower($name)]){
+        if(isset($departments[strtolower($name)])){
+            $department=$departments[strtolower($name)];
             return $department;
         }
         else{
