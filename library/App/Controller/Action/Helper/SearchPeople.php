@@ -44,10 +44,11 @@ class App_Controller_Action_Helper_SearchPeople
 
         //do sorting - sort by last name unless searching on last name, then
         //sorty on first name
-        $order="sn";
-        if($ldapAttribute=="sn"){
-            $order="givenName";
-        }
+        $order="";
+//        $order="sn";
+//        if($ldapAttribute=="sn"){
+//            $order="givenName";
+//        }
         //special search for telephone:
         //NOTE: replace "-" with " " for best results
         if($ldapAttribute=="telephoneNumber"){
@@ -71,6 +72,13 @@ class App_Controller_Action_Helper_SearchPeople
 
         }
 
+        //lastly do special sorting
+        //Sort application side lastName, firstName
+        //ldap only allows for one sort attribue (php limitation)
+        //sort here
+        usort($results,function($a,$b){
+            return strcmp($a->getLastName().", " .$a->getFirstName(), $b->getLastName().", " .$b->getFirstName());
+        });
         return $results;
 
     }
