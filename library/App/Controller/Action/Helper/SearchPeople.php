@@ -46,7 +46,7 @@ class App_Controller_Action_Helper_SearchPeople
         //sorty on first name
         $order="sn";
         if($ldapAttribute=="sn"){
-            $order="givenName, sn";
+            $order="givenName";
         }
         //special search for telephone:
         //NOTE: replace "-" with " " for best results
