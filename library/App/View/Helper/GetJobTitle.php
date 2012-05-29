@@ -2,13 +2,21 @@
 
 /**
  * Checks if student or not, returns appropriate title text
- *
+ * Additionaly checks if person is active, displays seperate text based on active
  * @author Chris
  */
 class Zend_View_Helper_GetJobTitle
     extends Zend_View_Helper_Abstract
 {
     public function getJobTitle(Application_Model_DirectoryPerson $person){
+
+        $output="";
+        $status=$person->getOrganizationalStatus();
+        if($status!="active"){
+            $output.="<div class='error'>No longer an active <span style='text-transform:capitalize'>" . $person->getPrimaryAffiliation() . "</span></div>";
+            return $output;
+        }
+
         if($person->getPrimaryAffiliation()=="student"){
             return "<span style='text-transform:capitalize'>" . $person->getSubAffiliation() . "</span>" . " Student";
         }
@@ -26,11 +34,10 @@ class Zend_View_Helper_GetJobTitle
             if(!empty($jobTitle2)) $output.= "<br />" . $jobTitle2;
 
             if(empty($output)){
-                return "No Specified Title";
+                $output="<span style='text-transform:capitalize'>" . $person->getPrimaryAffiliation() . "</span>";
             }
-            else{
-                return $output;
-            }
+
+            return $output;
 
         }
 

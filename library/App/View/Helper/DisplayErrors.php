@@ -1,12 +1,7 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of DisplayErrors
+ * View helper to display errors straight into a view, no controller needed
  *
  * @author Chris
  */
@@ -23,6 +18,7 @@ class App_View_Helper_DisplayErrors {
         }
         return $output;
     }
+
 
 }
 

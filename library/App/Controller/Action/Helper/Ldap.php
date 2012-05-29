@@ -171,7 +171,8 @@ class App_Controller_Action_Helper_Ldap
             "ucmercededupublishcellphonenumber",
             "mobile",
             "edupersonprimaryaffiliation",
-            "ucmercededuaffiliationsubtype"
+            "ucmercededuaffiliationsubtype",
+            "organizationalstatus"
             );
     }
 

@@ -16,6 +16,7 @@ class Application_Model_DirectoryPerson
     public $cellPhone;
     public $primaryAffiliation;
     public $subAffiliation;
+    public $organizationalStatus;
 
     public function __construct(array $options = null)
     {
@@ -194,6 +195,7 @@ class Application_Model_DirectoryPerson
 
     public function setSubAffiliation($subAffiliation) {
         $this->subAffiliation = $subAffiliation;
+        return $this;
     }
 
     public function getJobTitle2() {
@@ -211,6 +213,14 @@ class Application_Model_DirectoryPerson
 
     public function getFullName(){
         return $this->getFirstName() . " " . $this->getLastName();
+    }
+
+    public function getOrganizationalStatus() {
+        return $this->organizationalStatus;
+    }
+
+    public function setOrganizationalStatus($organizationalStatus) {
+        $this->organizationalStatus = $organizationalStatus;
     }
 
 }
