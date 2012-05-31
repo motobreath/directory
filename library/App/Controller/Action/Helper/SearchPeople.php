@@ -49,7 +49,8 @@ class App_Controller_Action_Helper_SearchPeople
             "givenName",
             "mail",
             "ucMercedEduApptDeptName1",
-            "uid"
+            "uid",
+            "cn"
         );
         if(in_array($ldapAttribute,$appendWildcard)){
             $searchFor.="*";
@@ -98,7 +99,7 @@ class App_Controller_Action_Helper_SearchPeople
         //ldap only allows for one sort attribue (php limitation)
         //sort here
         usort($results,function($a,$b){
-            return strcmp($a->getLastName().", " .$a->getFirstName(), $b->getLastName().", " .$b->getFirstName());
+            return strcmp(strtolower($a->getLastName()).", " .strtolower($a->getFirstName()), strtolower($b->getLastName()).", " .strtolower($b->getFirstName()));
         });
 
         //remove students if departmental search but not if pd, they want more data

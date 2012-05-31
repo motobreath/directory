@@ -73,6 +73,7 @@ class Application_Model_DirectoryDepartmentMapper {
      * @return Array
      */
     private function getDepartments(){
+        /*
         if(null===$this->departments){
             //get from session
             $this->departments=$this->getSession()->departments;
@@ -86,6 +87,7 @@ class Application_Model_DirectoryDepartmentMapper {
             }
 
         }
+        */
         if(!$this->departments){
             //get from db
             $sql=$this->db->select()->from("IDMV7.UCMDEPARTMENT")->order("NAME ASC");
