@@ -38,7 +38,7 @@ class App_Controller_Action_Helper_SearchPeople
         $searchFor=$this->ldap->escapeValue($searchFor);
 
         //add wildcard for firstname, last name, email
-        if($ldapAttribute=="sn" || $ldapAttribute=="givenName" || $ldapAttribute=="mail" || $ldapAttribute=="ucMercedEduApptDeptName1"){
+        if($ldapAttribute=="sn" || $ldapAttribute=="givenName" || $ldapAttribute=="mail" || $ldapAttribute=="ucMercedEduApptDeptName1" || $ldapAttribute=="cn"){
             $searchFor.="*";
         }
 
@@ -77,7 +77,7 @@ class App_Controller_Action_Helper_SearchPeople
         //ldap only allows for one sort attribue (php limitation)
         //sort here
         usort($results,function($a,$b){
-            return strcmp($a->getLastName().", " .$a->getFirstName(), $b->getLastName().", " .$b->getFirstName());
+            return strcmp(strtolower($a->getLastName()).", " .strtolower($a->getFirstName()), strtolower($b->getLastName()).", " .strtolower($b->getFirstName()));
         });
         return $results;
 
