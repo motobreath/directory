@@ -72,7 +72,7 @@ class IndexController extends Zend_Controller_Action
 
         //if searched for a department and has search results
         //show department details as well
-        if($searchBy=="department"){
+        if($searchBy=="ucmercededuapptdeptname1"){
             $deptMapper=new Application_Model_DirectoryDepartmentMapper();
             $this->view->department=$deptMapper->find($searchFor);
         }

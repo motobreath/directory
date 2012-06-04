@@ -13,7 +13,7 @@ class Application_Form_Search extends Zend_Form
             'lastName' => 'Last Name (automatic wildcard at the end)',
             'firstName' => 'First Name (automatic wildcard at the end)',
             'fullName' => 'Full Name',
-            'department' => 'Department',
+            'ucmercededuapptdeptname1' => 'Department',
             'email'=>"Email",
             'telephone'=>"Telephone Number"
         );
