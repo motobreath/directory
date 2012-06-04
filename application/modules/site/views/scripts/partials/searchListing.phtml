@@ -1,7 +1,7 @@
 
         <li <?php if($this->partialCounter % 2==0) echo "class='alt'"?>>
             <div class="left">
-                <a href="/site/index/details/email/<?php echo $this->person->email ?>"  class="name"><?php echo $this->person->getLastNameFirst()?></a><br />
+                <a href="<?php echo $this->getDetailsLink($this->person)?>"  class="name"><?php echo $this->person->getLastNameFirst()?></a><br />
                 <?php echo $this->getJobTitle($this->person);?>
             </div>
             <div class="right">

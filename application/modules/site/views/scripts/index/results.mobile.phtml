@@ -5,7 +5,7 @@
 <?php if($this->searchResults){ ?>
 <ul data-inset="true" data-role="listview">
     <?php foreach($this->searchResults as $person){ ?>
-        <li><a href="/index/details/email/<?php echo $person->getEmail()?>"><?php echo $person->getLastName() . ", " . $person->getFirstName()?></a></li>
+        <li><a href="<?php echo $this->getDetailsLink($person)?>"><?php echo $person->getLastName() . ", " . $person->getFirstName()?></a></li>
     <?php } ?>
 </ul>
 <?php }

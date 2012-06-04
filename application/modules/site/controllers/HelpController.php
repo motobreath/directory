@@ -1,7 +1,5 @@
 <?php
 
-include "CAS/CAS.php";
-
 class HelpController extends Zend_Controller_Action
 {
 
@@ -37,7 +35,7 @@ class HelpController extends Zend_Controller_Action
     public function updateAction()
     {
         if(!$this->getSession()->username){
-            $this->getCAS();
+            $this->_helper->CAS();
         }
         $options=array(
             "firstName"=>$this->person->getFirstName(),
@@ -111,8 +109,7 @@ class HelpController extends Zend_Controller_Action
 
     public function logoutAction(){
         Zend_Session_Namespace::resetSingleInstance($this->_namespace);
-        phpCAS::client(SAML_VERSION_1_1,"cas.ucmerced.edu",443,"/cas",false);
-        phpCAS::logoutWithRedirectService("/");
+        $this->_helper->CAS->logout();
         $this->_redirect("/");
     }
 
@@ -122,16 +119,6 @@ class HelpController extends Zend_Controller_Action
             $this->session=new Zend_Session_Namespace($this->_namespace);
         }
         return $this->session;
-    }
-
-    private function getCAS(){
-        //this action is cassified, only view after login
-
-        phpCAS::client(SAML_VERSION_1_1,"cas.ucmerced.edu",443,"/cas",false);
-        phpCAS::setNoCasServerValidation();
-        phpCAS::forceAuthentication();
-
-        $this->getSession()->username=phpCAS::getUser();
     }
 
 

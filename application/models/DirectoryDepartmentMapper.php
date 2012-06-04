@@ -73,7 +73,7 @@ class Application_Model_DirectoryDepartmentMapper {
      * @return Array
      */
     private function getDepartments(){
-        
+
         if(!$this->departments){
             //get from db
             $sql=$this->db->select()->from("IDMV7.UCMDEPARTMENT")->order("NAME ASC");
@@ -90,10 +90,8 @@ class Application_Model_DirectoryDepartmentMapper {
                 );
                 $results[$options["name"]]=new Application_Model_DirectoryDepartment($options);
             }
-            //cache these
-            $this->cache->save($results,"departments");
-            $this->departments=$results;
         }
+        
         return $this->departments;
     }
 

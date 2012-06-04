@@ -88,11 +88,18 @@ class IndexController extends Zend_Controller_Action
     public function detailsAction()
     {
         $email=$this->_getParam("email");
-        if(empty($email)){
+        $IDMID=$this->_getParam("IDM");
+        if(empty($email) && empty($IDMID)){
             $this->flashMessenger->setNamespace("directoryErrors")->addMessage("Person not found. Please search again.");
             //$this->_redirect("/");
         }
-        $person=$this->getHelper("SearchPeople")->getPerson($email);
+        if($IDMID){
+            $person=$this->getHelper("SearchPeople")->getPersonFromIDMID($IDMID);
+        }
+        else{
+            $person=$this->getHelper("SearchPeople")->getPerson($email);
+        }
+
 
         $form=$this->getHelper("FormLoader")->load("SMS");
         if($this->getRequest()->isPost()){

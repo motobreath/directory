@@ -120,6 +120,9 @@
               <actionMethod actionName="sendcontact"/>
             </controllerFile>
             <controllerFile controllerName="Redirect"/>
+            <controllerFile controllerName="Police">
+              <actionMethod actionName="index"/>
+            </controllerFile>
           </controllersDirectory>
           <formsDirectory>
             <formFile formName="Contact"/>
@@ -183,6 +186,9 @@
                 <viewScriptFile forActionName="detail"/>
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Redirect">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Police">
                 <viewScriptFile forActionName="index"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
