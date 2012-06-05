@@ -22,7 +22,7 @@ class PoliceController extends Zend_Controller_Action
         $config=new Zend_Config_Json(APPLICATION_PATH . "/configs/pdUsers.json","users");
         if(in_array($username,$config->toArray())){
             $this->session->userRole="PD";
-            $this->getHelper("FlashMessenger")->setNamespace("directoryMsg")->addMessage("Successfully logged in as Police Department User");
+            $this->getHelper("FlashMessenger")->setNamespace("directoryMsg")->addMessage("<strong>Successfully logged in as Police Department User.</strong><p>Additional search options are available as well as additional user types will be displayed in your search results.</p>");
         }
         else{
             $this->getHelper("FlashMessenger")->setNamespace("directoryErrors")->addMessage("You are not authorized to view that page");

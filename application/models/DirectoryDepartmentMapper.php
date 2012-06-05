@@ -90,8 +90,8 @@ class Application_Model_DirectoryDepartmentMapper {
                 );
                 $results[$options["name"]]=new Application_Model_DirectoryDepartment($options);
             }
+            $this->departments=$results;
         }
-        
         return $this->departments;
     }
 
