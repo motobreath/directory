@@ -38,7 +38,7 @@ class App_Controller_Action_Helper_SearchPeople
         $searchFor=$this->ldap->escapeValue($searchFor);
 
         //add wildcard for firstname, last name, email
-        if($ldapAttribute=="sn" || $ldapAttribute=="givenName" || $ldapAttribute=="mail"){
+        if($ldapAttribute=="sn" || $ldapAttribute=="givenName" || $ldapAttribute=="mail"|| $ldapAttribute=="ucmercededuapptdeptname1"){
             $searchFor.="*";
         }
 
@@ -57,7 +57,7 @@ class App_Controller_Action_Helper_SearchPeople
         else{
             $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
         }
-        
+
         $entries=$this->ldap->search($filter,null,$order);
         $entries=$entries->toArray();
         $results=array();
