@@ -12,6 +12,7 @@ class Application_Model_DirectoryPerson
     public $jobTitle;
     public $jobTitle2;
     public $department;
+    public $department2;
     public $location;
     public $cellPhone;
     public $primaryAffiliation;
@@ -158,7 +159,13 @@ class Application_Model_DirectoryPerson
     {
       return $this->department;
     }
-
+    public function getDepartment2() {
+        return $this->department2;
+    }
+    public function setDepartment2($department2) {
+        $this->department2 = $department2;
+        return $this;
+    }
     public function setLocation($location)
     {
       $this->location = (string) $location;

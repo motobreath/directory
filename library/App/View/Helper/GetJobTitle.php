@@ -24,6 +24,7 @@ class Zend_View_Helper_GetJobTitle
             $output="";
             $jobTitle1=$person->getJobTitle();
             $dept=$person->getDepartment();
+            $dept2=$person->getDepartment2();
             $jobTitle2=$person->getJobTitle2();
 
             if(!empty($jobTitle1)){
@@ -31,6 +32,7 @@ class Zend_View_Helper_GetJobTitle
                 if(!empty($dept)) $output.=  " - ";
             }
             if(!empty($dept)) $output.=  "<a href='/site/departments/results/department/$dept/' data-prefetch>" . $dept . "</a>";
+            if(!empty($dept2)) $output.=  "<br /><a href='/site/departments/results/department/$dept2/' data-prefetch>" . $dept2 . "</a>";
             if(!empty($jobTitle2)) $output.= "<br />" . $jobTitle2;
 
             if(empty($output)){

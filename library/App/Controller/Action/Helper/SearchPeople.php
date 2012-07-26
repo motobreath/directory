@@ -82,8 +82,8 @@ class App_Controller_Action_Helper_SearchPeople
                 //limit by filters
                 if($searchBy=="ucmercededuapptdeptname1"){
                     //this filter removes students from the list
-                    //when searching
-                    $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(!(edupersonprimaryaffiliation=student))(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)))";
+                    //also adds dept. Name 2
+                    $filter = "(&(|(ucmercededuapptdeptname1=$searchFor)(ucmercededuapptdeptname2=$searchFor))(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
                 }
                 else{
                     //default filter
@@ -96,7 +96,6 @@ class App_Controller_Action_Helper_SearchPeople
         $entries=$this->ldap->search($filter,null);
         $entries=$entries->toArray();
         $results=array();
-
         foreach($entries as $entry){
             if($this->ldap->getItem($entry, "ucmercededuferpa")!="1"){
 
@@ -182,6 +181,7 @@ class App_Controller_Action_Helper_SearchPeople
                ->setJobTitle($this->ldap->getItem($entry, "ucmercededuappttitle1"))
                ->setJobTitle2($this->ldap->getItem($entry, "ucmercededuappttitle2"))
                ->setDepartment($this->ldap->getItem($entry, "ucmercededuapptdeptname1"))
+               ->setDepartment2($this->ldap->getItem($entry, "ucmercededuapptdeptname2"))
                ->setLocation($this->ldap->getItem($entry, "roomnumber"))
                ->setCellPhone($this->ldap->getItem($entry, "ucmercededupublishcellphonenumber") == "1" ? $this->ldap->getItem($entry, "mobile") : "")
                ->setPrimaryAffiliation($this->ldap->getItem($entry, "edupersonprimaryaffiliation"))
@@ -193,6 +193,7 @@ class App_Controller_Action_Helper_SearchPeople
             $person->setCellPhone("");
             $person->setFax("");
         }
+
 
     }
 
