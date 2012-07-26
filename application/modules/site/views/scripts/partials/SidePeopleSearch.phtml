@@ -7,5 +7,11 @@
         <li>All matching results will be returned.</li>
         <li>This search supports partial names. For example, entering &quot;rob&quot; will find people named robert, robertson, robin, etc.</li>
         <li>We have a mobile version! <a href="/redirect/mobile">Visit Mobile Version</a></li>
+        <?php
+            $policeMsg=$this->displayPoliceStatus();
+            if(!empty($policeMsg)){
+                echo "<li>" . $policeMsg . "</li>";
+            }
+        ?>
     </ul>
 </aside>

@@ -12,10 +12,12 @@ class Application_Model_DirectoryPerson
     public $jobTitle;
     public $jobTitle2;
     public $department;
+    public $department2;
     public $location;
     public $cellPhone;
     public $primaryAffiliation;
     public $subAffiliation;
+    public $organizationalStatus;
 
     public function __construct(array $options = null)
     {
@@ -157,7 +159,13 @@ class Application_Model_DirectoryPerson
     {
       return $this->department;
     }
-
+    public function getDepartment2() {
+        return $this->department2;
+    }
+    public function setDepartment2($department2) {
+        $this->department2 = $department2;
+        return $this;
+    }
     public function setLocation($location)
     {
       $this->location = (string) $location;
@@ -194,6 +202,7 @@ class Application_Model_DirectoryPerson
 
     public function setSubAffiliation($subAffiliation) {
         $this->subAffiliation = $subAffiliation;
+        return $this;
     }
 
     public function getJobTitle2() {
@@ -211,6 +220,14 @@ class Application_Model_DirectoryPerson
 
     public function getFullName(){
         return $this->getFirstName() . " " . $this->getLastName();
+    }
+
+    public function getOrganizationalStatus() {
+        return $this->organizationalStatus;
+    }
+
+    public function setOrganizationalStatus($organizationalStatus) {
+        $this->organizationalStatus = $organizationalStatus;
     }
 
 }

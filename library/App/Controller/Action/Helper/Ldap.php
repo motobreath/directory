@@ -167,11 +167,13 @@ class App_Controller_Action_Helper_Ldap
             "ucmercededuappttitle1",
             "ucmercededuappttitle2",
             "ucmercededuapptdeptname1",
+            "ucmercededuapptdeptname2",
             "roomnumber",
             "ucmercededupublishcellphonenumber",
             "mobile",
             "edupersonprimaryaffiliation",
-            "ucmercededuaffiliationsubtype"
+            "ucmercededuaffiliationsubtype",
+            "organizationalstatus"
             );
     }
 

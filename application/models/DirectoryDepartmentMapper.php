@@ -55,9 +55,12 @@ class Application_Model_DirectoryDepartmentMapper {
      * @return Application_Model_DirectoryDepartment
      */
     public function find($name){
+
         $departments=$this->getDepartments();
-        if(isset($departments[ucwords($name)])){
-            return $departments[ucwords($name)];
+        $departments=array_change_key_case($departments);
+        if(isset($departments[strtolower($name)])){
+            $department=$departments[strtolower($name)];
+            return $department;
         }
         else{
             return false;
@@ -70,38 +73,31 @@ class Application_Model_DirectoryDepartmentMapper {
      * @return Array
      */
     private function getDepartments(){
-        if(null===$this->departments){
-            //get from session
-            $this->departments=$this->getSession()->departments;
-        }
+
         if(!$this->departments){
-            //get from cache
-            $this->departments=$this->cache->load("departments");
-            //save these in session
-            if($this->departments){
-                $this->getSession()->departments=$this->departments;
+            //check if cached, get from cache first
+            $cache=Zend_Registry::get("cache");
+            $this->departments=$cache->load("departments");
+            if(!$this->departments){
+                //get from db
+                $sql=$this->db->select()->from("IDMV7.UCMDEPARTMENT")->order("NAME ASC");
+                $rs=$this->db->fetchAll($sql);
+                $results=array();
+                foreach($rs as $row){
+                    $options=array(
+                        "name"=>$row["NAME"],
+                        "phone"=>$row["PHONENUMBER"],
+                        "fax"=>$row["FAXNUMBER"],
+                        "description"=>$row["DESCRIPTION"],
+                        "url"=>$row["URL"],
+
+                    );
+                    $results[$options["name"]]=new Application_Model_DirectoryDepartment($options);
+                }
+                $this->departments=$results;
+                $cache->save($results,"departments");
             }
 
-        }
-        if(!$this->departments){
-            //get from db
-            $sql=$this->db->select()->from("IDMV7.UCMDEPARTMENT")->order("NAME ASC");
-            $rs=$this->db->fetchAll($sql);
-            $results=array();
-            foreach($rs as $row){
-                $options=array(
-                    "name"=>$row["NAME"],
-                    "phone"=>$row["PHONENUMBER"],
-                    "fax"=>$row["FAXNUMBER"],
-                    "description"=>$row["DESCRIPTION"],
-                    "url"=>$row["URL"],
-
-                );
-                $results[$options["name"]]=new Application_Model_DirectoryDepartment($options);
-            }
-            //cache these
-            $this->cache->save($results,"departments");
-            $this->departments=$results;
         }
         return $this->departments;
     }

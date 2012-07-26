@@ -56,5 +56,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         date_default_timezone_set("America/Los_Angeles");
     }
 
+    protected function _initACL(){
+        $acl=new Zend_Acl();
+
+        $acl->addRole(new Zend_Acl_Role("PD"));
+        $acl->addRole(new Zend_Acl_Role("user"));
+
+        $acl->addResource(new Zend_Acl_Resource("PDsearchForm"));
+        $acl->addResource(new Zend_Acl_Resource("AdditionalData"));
+        $acl->allow("PD",array(
+            "PDsearchForm","AdditionalData"
+        ));
+
+        Zend_Registry::set("ACL",$acl);
+    }
+
 }
 

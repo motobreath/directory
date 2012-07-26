@@ -42,7 +42,7 @@ class PrintController extends Zend_Controller_Action
                     $this->view->searchBy="Full Name";
                     break;
                 case "department":
-                    $this->view->searchBy="Last Name";
+                    $this->view->searchBy="Department";
                     break;
                 case "email":
                     $this->view->searchBy="Email";
@@ -55,7 +55,22 @@ class PrintController extends Zend_Controller_Action
             }
 
         }
-        $this->view->searchResults=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
+        $people=$this->getHelper("SearchPeople")->search($searchBy,$searchFor);
+        foreach($people as $key=>$person){
+            //filter out some data based on search
+            //if dept, only show staff not students
+            if($searchBy=="ucmercededuapptdeptname1"){
+                $affiliation=$person->getPrimaryAffiliation();
+                if($affiliation=="student"){
+                    unset($people[$key]);
+                }
+            }
+            //add additional search options here, i.e if you would like to
+            //filter out by addiotnal params put them here
+        }
+        if($searchBy)
+
+        $this->view->searchResults=$people;
         $view=$this->view=Zend_Controller_Front::getInstance()->getParam('bootstrap')->getResource('view');
         $html=$view->render("print/pdf.phtml");
 

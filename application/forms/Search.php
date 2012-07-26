@@ -13,10 +13,19 @@ class Application_Form_Search extends Zend_Form
             'lastName' => 'Last Name (automatic wildcard at the end)',
             'firstName' => 'First Name (automatic wildcard at the end)',
             'fullName' => 'Full Name',
-            'department' => 'Department',
+            'ucmercededuapptdeptname1' => 'Department',
             'email'=>"Email",
             'telephone'=>"Telephone Number"
         );
+
+        //if pd, allow for more search options
+        if(Zend_Controller_Action_HelperBroker::getStaticHelper("ACL")->hasAccess("PDsearchForm")){
+            $searchOptions["ucmnetid"]="UCMNetID";
+            $searchOptions["sid"]="Student ID";
+            $searchOptions["eid"]="Employee ID";
+            $searchOptions["ccid"]="Cat Card ID";
+        }
+
         $searchBy = new Zend_Form_Element_Select('searchBy');
         $searchBy->addMultiOptions($searchOptions)
                 ->setLabel("Search By:")
