@@ -50,6 +50,18 @@ class PrintController extends Zend_Controller_Action
                 case "telephone":
                     $this->view->searchBy="Telephone";
                     break;
+                case "ucmnetid":
+                    $this->view->searchBy="UCMNetID";
+                    break;
+                case "sid":
+                    $this->view->searchBy="Student ID";
+                    break;
+                case "eid":
+                    $this->view->searchBy="Employee ID";
+                    break;
+                case "ccid":
+                    $this->view->searchBy="Cat Card ID";
+                    break;
                 default:
                     throw new Exception("Invalid search term for generating PDF",500);
             }
