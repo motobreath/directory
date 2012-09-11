@@ -42,7 +42,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     protected function _initCaching() {
         $frontOptions = array(
-            "lifetime" => 86400,
+            "lifetime" => 900,
             "automatic_serialization" => true
         );
 
