@@ -92,13 +92,20 @@ class HelpController extends Zend_Controller_Action
 
             $mail->setBodyHtml($msg);
 
-            $mail->addTo("idm@ucmerced.edu");
-            if($mso!="No MSO selected"){
-                $mail->addTo($mso);
-            }
+            $mail->addTo($mso);
+            
             $mail->setSubject("Request to change information for:" . $this->person->getEmail());
             $mail->setFrom("directory@ucmerced.edu");
-            $mail->send();
+
+            try{
+                $mail->send();
+            }
+            catch(Exception $e){
+                $mail->clearRecipients();
+                $mail->addTo("cmitchell@ucmerced.edu");
+                $mail->send();
+            }
+
 
             $this->view->sent=true;
 

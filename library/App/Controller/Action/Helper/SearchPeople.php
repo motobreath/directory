@@ -80,14 +80,15 @@ class App_Controller_Action_Helper_SearchPeople
             else{
                 //not police search
                 //limit by filters
+                //Department Filter
                 if($searchBy=="ucmercededuapptdeptname1"){
                     //this filter removes students from the list
                     //also adds dept. Name 2
-                    $filter = "(&(|(ucmercededuapptdeptname1=$searchFor)(ucmercededuapptdeptname2=$searchFor))(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
+                    $filter = "(&(|(ucmercededuapptdeptname1=$searchFor)(ucmercededuapptdeptname2=$searchFor))(ucmercededuonlinedir=1)(!(ucmercededuferpa=0))(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
                 }
                 else{
                     //default filter
-                    $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
+                    $filter = "(&($ldapAttribute=$searchFor)(ucmercededuonlinedir=1)(!(ucmercededuferpa=0))(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=faculty)(edupersonprimaryaffiliation=student)))";
                 }
 
             }
@@ -98,13 +99,10 @@ class App_Controller_Action_Helper_SearchPeople
         $entries=$entries->toArray();
         $results=array();
         foreach($entries as $entry){
-            if($this->ldap->getItem($entry, "ucmercededuferpa")!="1"){
 
-                $person = new Application_Model_DirectoryPerson();
-                $this->populatePerson($person,$entry);
-                $results[]=$person;
-
-            }
+            $person = new Application_Model_DirectoryPerson();
+            $this->populatePerson($person,$entry);
+            $results[]=$person;
 
         }
 

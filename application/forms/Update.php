@@ -62,6 +62,7 @@ class Application_Form_Update extends Zend_Form
 
         $mso=new Zend_Form_Element_Select("mso");
         $mso->setMultiOptions($this->getMSO())
+                ->setRequired()
                 ->setLabel("MSO:")
                 ->setDecorators(array("ViewHelper","Label",array("HtmlTag",array("tag"=>"br","openOnly"=>true))));
         $this->addElement($mso);
@@ -81,7 +82,7 @@ class Application_Form_Update extends Zend_Form
 
     private function getMSO(){
         $options=array(
-            "na"=>"Don't know or select one...",
+            "idm@ucmerced.edu"=>"Don't know or select one...",
             "pjohnston@ucmerced.edu"=>"Academic Affairs - Phil Johnston",
             "speterson@ucmerced.edu"=>"Academic Resource Center - Stephanie Peterson",
             "speterson@ucmerced.edu"=>"Academic Personnel - Stephanie Peterson",

@@ -173,7 +173,8 @@ class App_Controller_Action_Helper_Ldap
             "mobile",
             "edupersonprimaryaffiliation",
             "ucmercededuaffiliationsubtype",
-            "organizationalstatus"
+            "organizationalstatus",
+            "ucmercededuferpa"
             );
     }
 

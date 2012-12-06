@@ -7,7 +7,19 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<?php echo $this->headTitle() ?>
+	<?php
+
+            $title=$this->headTitle();
+            if($title=="<title></title>"){
+                echo "<title>UC Merced People Directory</title>";
+            }
+            else{
+                echo $title;
+            }
+         ?>
+
+
+
 	<meta name="description" content="">
 	<meta name="author" content="">
 
