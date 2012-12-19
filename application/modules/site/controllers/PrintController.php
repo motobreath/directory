@@ -41,7 +41,7 @@ class PrintController extends Zend_Controller_Action
                 case "fullName":
                     $this->view->searchBy="Full Name";
                     break;
-                case "department":
+                case "ucmercededuapptdeptname1":
                     $this->view->searchBy="Department";
                     break;
                 case "email":
