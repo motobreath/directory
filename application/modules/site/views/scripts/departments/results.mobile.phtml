@@ -9,6 +9,7 @@
     <p class="deptLinks">
         <?php if(!empty($this->department->phone)) echo "<span class='phone'>Phone:</span>" . $this->phoneFormat($this->department->phone) . "<br />"?>
         <?php if(!empty($this->department->fax)) echo "<span class='fax'>Fax:</span>" . $this->phoneFormat($this->department->fax) . "<br />"?>
+        <?php if(!empty($this->department->email)) echo "<span class='email'>Email:</span> <a href='mailto:" . $this->department->email . "'>" . $this->department->email . "</a><br />"?>
         <?php if(!empty($this->department->url)) echo "<span class='url'><a href='" .$this->department->url . "' target='_blank' title='" . $this->department->url . "'>Visit Website</a></span>" ?>
     </p>
 </div>
