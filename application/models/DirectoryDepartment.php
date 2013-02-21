@@ -17,6 +17,7 @@ class Application_Model_DirectoryDepartment {
     public $phone;
     public $fax;
     public $url;
+    public $email;
 
     public function __construct(array $options = null)
     {
@@ -107,6 +108,13 @@ class Application_Model_DirectoryDepartment {
 
     public function setUrl($url) {
         $this->url = $url;
+    }
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
     }
 
 }

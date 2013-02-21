@@ -16,6 +16,9 @@
                 <?php echo $this->partialLoop()->setObjectKey('person')
                         ->partialLoop("partials/searchListing.phtml",$this->searchResults) ?>
             </ul>
+            <?php }
+            else { ?>
+            <p><strong>No Results Found</strong></p>
             <?php } ?>
 
     </section>

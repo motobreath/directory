@@ -17,16 +17,6 @@ class Application_Model_DirectoryDepartmentMapper {
      * @var Array
      */
     private $departments;
-    /**
-     *
-     * @var String
-     */
-    private $_namespace="UCMDirectory";
-    /**
-     *
-     * @var Zend_Session
-     */
-    private $session;
 
     /**
      *
@@ -56,8 +46,7 @@ class Application_Model_DirectoryDepartmentMapper {
      */
     public function find($name){
 
-        $departments=$this->getDepartments();
-        $departments=array_change_key_case($departments);
+        $departments=array_change_key_case($this->getDepartments());
         if(isset($departments[strtolower($name)])){
             $department=$departments[strtolower($name)];
             return $department;
@@ -90,6 +79,7 @@ class Application_Model_DirectoryDepartmentMapper {
                         "fax"=>$row["FAXNUMBER"],
                         "description"=>$row["DESCRIPTION"],
                         "url"=>$row["URL"],
+                        "email"=>$row["DEPARTMENTEMAIL"]
 
                     );
                     $results[$options["name"]]=new Application_Model_DirectoryDepartment($options);
@@ -100,17 +90,6 @@ class Application_Model_DirectoryDepartmentMapper {
 
         }
         return $this->departments;
-    }
-
-    /**
-     *
-     * @return Zend_Session
-     */
-    private function getSession(){
-        if(null===$this->session){
-            $this->session=new Zend_Session_Namespace($this->_namespace);
-        }
-        return $this->session;
     }
 
 }

@@ -8,6 +8,7 @@
 
 <p><strong>Search Results</strong></p>
 <hr />
+<?php if($this->searchResults){ ?>
 <table cellspacing="0" cellpadding="0" width="100%">
         <?php
         $count=0;
@@ -28,5 +29,9 @@
             $count++;
         } ?>
 </table>
+<?php }
+else{ ?>
+<p><strong>No Results Found</strong></p>
+<?php } ?>
 </body></html>
 
