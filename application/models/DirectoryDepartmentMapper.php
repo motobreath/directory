@@ -64,30 +64,22 @@ class Application_Model_DirectoryDepartmentMapper {
     private function getDepartments(){
 
         if(!$this->departments){
-            //check if cached, get from cache first
-            $cache=Zend_Registry::get("cache");
-            $this->departments=$cache->load("departments");
-            if(!$this->departments){
-                //get from db
-                $sql=$this->db->select()->from("IDMV7.UCMDEPARTMENT")->order("NAME ASC");
-                $rs=$this->db->fetchAll($sql);
-                $results=array();
-                foreach($rs as $row){
-                    $options=array(
-                        "name"=>$row["NAME"],
-                        "phone"=>$row["PHONENUMBER"],
-                        "fax"=>$row["FAXNUMBER"],
-                        "description"=>$row["DESCRIPTION"],
-                        "url"=>$row["URL"],
-                        "email"=>$row["DEPARTMENTEMAIL"]
-
-                    );
-                    $results[$options["name"]]=new Application_Model_DirectoryDepartment($options);
-                }
-                $this->departments=$results;
-                $cache->save($results,"departments");
+            //get from db
+            $sql=$this->db->select()->from("IDMV7.UCMDEPARTMENT")->order("NAME ASC");
+            $rs=$this->db->fetchAll($sql);
+            $results=array();
+            foreach($rs as $row){
+                $options=array(
+                    "name"=>$row["NAME"],
+                    "phone"=>$row["PHONENUMBER"],
+                    "fax"=>$row["FAXNUMBER"],
+                    "description"=>$row["DESCRIPTION"],
+                    "url"=>$row["URL"],
+                    "email"=>$row["DEPARTMENTEMAIL"]
+                );
+                $results[$options["name"]]=new Application_Model_DirectoryDepartment($options);
             }
-
+            $this->departments=$results;
         }
         return $this->departments;
     }
