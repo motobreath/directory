@@ -14,7 +14,6 @@
     <div class="right">
         <?php if(!empty($this->dept->phone)) echo "<span class='phone'>Phone:</span>" . $this->phoneFormat($this->dept->phone) . "<br />"?>
         <?php if(!empty($this->dept->fax)) echo "<span class='fax'>Fax:</span>" . $this->phoneFormat($this->dept->fax) . "<br />"?>
-        <div style='display:none'><?php echo $this->dept->email?></div>
         <?php if(!empty($this->dept->email)) echo "<span class='email deptListingEmail'>Email:</span> <a class='deptListingEmail' title='" . $this->dept->email . "' href='mailto:" . $this->dept->email . "'>" . $this->dept->email . "</a><br />" ?>
         <?php if(!empty($this->dept->url)) echo "<span class='url'><a href='" .$this->dept->url . "' target='_blank' title='" . $this->dept->url . "'>Visit Website</a></span>" ?>
     </div>
