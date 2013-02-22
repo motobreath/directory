@@ -106,7 +106,7 @@ class Application_Form_Update extends Zend_Form
             "speterson@ucmerced.edu"=>"Exec. Vice Chancellor and Provost - Stephanie Peterson",
             "tsmullen@ucmerced.edu"=>"Facilities - Tony Smullen",
             "kbonilla@ucmerced.edu"=>"Financial Aid - Karen Bonilla",
-            "syoshimi@ucmerced.edu"=>"Graduate Division - Sandy Yoshimi",
+            "mtinoco@ucmerced.edu"=>"Graduate Division - Maria Tinoco",
             "harno@ucmerced.edu"=>"Great Valley Center (Modesto) - Heidi Arno",
             "kunruh@ucmerced.edu"=>"Human Resources - Katie Unruh",
             "mangel@ucmerced.edu"=>"Information Technology - Marisela Angel",
