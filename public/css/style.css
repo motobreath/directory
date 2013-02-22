@@ -594,6 +594,18 @@ img.pdf{
     display:none;
 }
 
+span.deptListingEmail{
+    float:left;
+}
+
+a.deptListingEmail{
+    float:left;
+    width:220px;
+    overflow:hidden;
+    text-overflow:ellipses;
+    display:block;
+}
+
 /* =============================================================================
     Form Styles
    ===========================================================================*/

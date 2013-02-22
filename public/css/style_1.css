@@ -620,6 +620,17 @@ input.submit{
     width:100px;
     display:inline-block;
 }
+span.deptListingEmail{
+    float:left;
+}
+a.deptListingEmail{
+    float:left;
+    padding-left:17px;
+    width:135px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:block;
+}
 
 /* =============================================================================
    Non-semantic helper classes
