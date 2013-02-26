@@ -30,7 +30,7 @@ class Application_Form_Search extends Zend_Form
         $searchBy->addMultiOptions($searchOptions)
                 ->setLabel("Search By:")
                 ->setRequired()
-                ->addErrorMessage("Invalid Search")
+                ->addErrorMessage("Please select a search by parameter")
                 ->setDecorators(array("Errors","ViewHelper","Label",array("HtmlTag",array("tag"=>"<img>","class"=>"loading","src"=>"/images/loading.gif","openOnly"=>true))));
         $this->addElement($searchBy);
 

@@ -145,7 +145,9 @@ class IndexController extends Zend_Controller_Action
         }
         else{
             foreach($form->getErrors() as $error){
-                 $this->flashMessenger->setNamespace("directoryErrors")->addMessage($error[0]);
+                if(isset($error[0])){
+                    $this->flashMessenger->setNamespace("directoryErrors")->addMessage($error[0]);
+                }
              }
              $this->_redirect("/");
         }
