@@ -23,6 +23,12 @@ class HelpController extends Zend_Controller_Action
         $this->person=$this->getSession()->detailPerson;
     }
 
+    public function preDispatch() {
+        if(!$this->person){
+            $this->_redirect("/");
+        }
+    }
+
     public function indexAction()
     {
 
@@ -37,6 +43,7 @@ class HelpController extends Zend_Controller_Action
         if(!$this->getSession()->username){
             $this->_helper->CAS();
         }
+
         $options=array(
             "firstName"=>$this->person->getFirstName(),
             "lastName"=>$this->person->getLastName(),
@@ -53,8 +60,8 @@ class HelpController extends Zend_Controller_Action
         if($this->getRequest()->isPost()){
 
             $mail=new Zend_Mail();
-            $msg="<p>This is generated from the directory page and is requested by " . $this->getSession()->username . "<br />";
-            $msg.="The user selected the following MSO: ";
+            $msg="<p>This is generated from the directory page and is requested by " . $this->getSession()->username . "</p>";
+            /* MSO Contact removed from form, see comment in form file
             $mso=$this->_getParam("mso");
             if($mso=="na"){
                 $msg.= "No MSO selected";
@@ -62,7 +69,8 @@ class HelpController extends Zend_Controller_Action
             else{
                 $msg.=$mso;
             }
-            $msg.="</p>";
+             *
+             */
             $msg.="<p>MSOs, please login to <a href='http://idm.ucmerced.edu'>http://idm.ucmerced.edu</a> and make the changes to the user's record.</p>";
             $msg.="First Name:<br />
                    Currently: " . $this->person->getFirstName() . "<br />
@@ -90,10 +98,14 @@ class HelpController extends Zend_Controller_Action
                    Requested: " . $this->_getParam("location") . "<br /><br />";
             $msg.="Comments:" . $this->_getParam("comments");
 
+            $recipient=$this->_helper->getMSO($this->person->getDepartment());
+            if($recipient["email"]=="idm@ucmerced.edu"){
+                $msg .= "<br /><br />***NOTE*** No MSO found for this user. Department: " . $this->person->getDepartment();
+                $recipient["email"]="idm@ucmerced.edu";
+                $recipient["name"]="IDM Manager";
+            }
             $mail->setBodyHtml($msg);
-
-            $mail->addTo($mso);
-            
+            $mail->addTo($recipient["email"],$recipient["name"]);
             $mail->setSubject("Request to change information for:" . $this->person->getEmail());
             $mail->setFrom("directory@ucmerced.edu");
 

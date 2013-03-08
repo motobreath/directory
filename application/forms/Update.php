@@ -65,7 +65,8 @@ class Application_Form_Update extends Zend_Form
                 ->setRequired()
                 ->setLabel("MSO:")
                 ->setDecorators(array("ViewHelper","Label",array("HtmlTag",array("tag"=>"br","openOnly"=>true))));
-        $this->addElement($mso);
+        //removing this dropdown from update page per Greg, will leave code here incase it should come back
+        //$this->addElement($mso);
 
 
         $comments=new Zend_Form_Element_Textarea("comments");
