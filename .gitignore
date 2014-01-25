@@ -1,8 +1,7 @@
 /nbproject/private/
-/application/configs/ldap.ini
+/application/configs/
 /nbproject/
 /application/tmp/
 /application/logs/
-/application/configs/email.ini
 /logs/
 /public/PhoneGap/.metadata/
