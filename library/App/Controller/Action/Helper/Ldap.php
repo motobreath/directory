@@ -42,7 +42,6 @@ class App_Controller_Action_Helper_Ldap
             $ldapOptions["username"] = $ldap->binddn;
         if($ldap->password)
             $ldapOptions["password"] = $ldap->password;
-
         $this->ldapConnection= new Zend_Ldap($ldapOptions);
 
     }
@@ -62,8 +61,9 @@ class App_Controller_Action_Helper_Ldap
      * @param String $order
      * @return type
      */
-    public function search($filter, $basedn=null, $order=null)
+    public function search($filter, $basedn = NULL, $scope = 1, array $attributes = Array(), $sort = NULL, $collectionClass = NULL, $sizelimit = 0, $timelimit = 0)
     {
+        $order=$sort;
         if(null===$basedn){
             $basedn=$this->getBasedn();
         }
