@@ -22,17 +22,23 @@ class App_Controller_Action_Helper_SearchPeople
       "email"		=> "mail",
       "telephone"	=> "telephoneNumber",
       "ucmercededuapptdeptname1"=> "ucmercededuapptdeptname1",
+      "title"=>"ucMercedEduApptTitle1",
       "ucmnetid" => "uid",
       "sid" => "ucmercededubannersid",
       "eid" => "employeenumber",
       "ccid" => "ucMercedEduCampusCardID"
     );
-
+    
+    /**
+     * If ldap attribute should have wildcards, add it to the list
+     * @var Array
+     */
     private $appendWildcardAttributes = array(
             "sn",
             "givenName",
             "mail",
             "ucmercededuapptdeptname1",
+            //"ucMercedEduApptTitle1",
             "uid",
             "cn"
     );
@@ -47,7 +53,7 @@ class App_Controller_Action_Helper_SearchPeople
     public function search($searchBy,$searchFor){
         $ldapAttribute = $this->searchByFieldToLDAPAttribute[$searchBy];
         if(!$ldapAttribute) {
-            throw new Exception("Invalid LDAP searchBy param. This should have been escaped from the search form");
+            throw new Exception("Invalid LDAP searchBy param: $searchBy. This should have been escaped from the search form");
         }
         $searchFor=$this->ldap->escapeValue($searchFor);
 
@@ -85,6 +91,11 @@ class App_Controller_Action_Helper_SearchPeople
                     //this filter removes students from the list
                     //also adds dept. Name 2
                     $filter = "(&(|(ucmercededuapptdeptname1=$searchFor)(ucmercededuapptdeptname2=$searchFor))(ucmercededuonlinedir=1)(!(ucmercededuferpa=0))(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
+                }
+                //Title filter
+                elseif($searchBy=="title"){
+                    $filter = "(&(|(ucMercedEduApptTitle1=*$searchFor*)(ucMercedEduApptTitle2=*$searchFor*))(ucmercededuonlinedir=1)(!(ucmercededuferpa=0))(|(edupersonprimaryaffiliation=staff)(edupersonprimaryaffiliation=generic)(edupersonprimaryaffiliation=affiliate)(edupersonprimaryaffiliation=faculty)))";
+                    
                 }
                 else{
                     //default filter
