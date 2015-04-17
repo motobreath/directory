@@ -21,7 +21,7 @@ class App_View_Helper_BuildVCard {
         $output.="URL;type=HOME:\n";
         $output.="TITLE;charset=iso-8859-1:\n";
         $output.="ORG;charset=iso-8859-1:University of California, Merced\n";
-        $output.="ADR;type=WORK;charset=iso-8859-1:;;5200 North Lake Road;Merced;CA;95343;USA\n";
+        $output.="ADR;type=WORK;charset=iso-8859-1:;{$person->getLocation()};5200 North Lake Road;Merced;CA;95343;USA\n";
         if($person->getPrimaryAffiliation()!="student"){
             $output.="TEL;type=WORK:" .  $person->getPhone() . "\n";
             $output.="TEL;type=FAX:" .  $person->getFax() . "\n";
