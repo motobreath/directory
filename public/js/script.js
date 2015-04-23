@@ -1,4 +1,6 @@
 $(function(){
+    $("#searchFor").focus();
+    
     $("#sendSMS").click(function(e){
         $("#sendSMSForm").show();
         e.preventDefault();
