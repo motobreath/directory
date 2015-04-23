@@ -1,5 +1,8 @@
 $(function(){
-    $("#searchFor").focus();
+    if($("#searchFor").val()==""){
+        $("#searchFor").focus();
+    }
+    
     
     $("#sendSMS").click(function(e){
         $("#sendSMSForm").show();
