@@ -16,6 +16,7 @@ class DepartmentsController extends Zend_Controller_Action
 
     public function init()
     {
+        return;
         //get all depts
         $mapper=$this->getDepartmentMapper();
         $this->departments=$mapper->fetchAll();
@@ -37,6 +38,7 @@ class DepartmentsController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        return;
         $options=array();
 
         foreach($this->departments as $department){
