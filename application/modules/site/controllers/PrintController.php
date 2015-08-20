@@ -62,8 +62,12 @@ class PrintController extends Zend_Controller_Action
                 case "ccid":
                     $this->view->searchBy="Cat Card ID";
                     break;
+                
                 default:
-                    throw new Exception("Invalid search term for generating PDF",500);
+                //    throw new Exception("Invalid search term for generating PDF",500);
+                    $this->getHelper("FlashMessenger")->setNamespace("directoryErrors")->addMessage("Invalid Option for Printing PDF.<br />If you need assistance, please contact the Help Desk at (209) 228-HELP(4357)");
+                    $this->_redirect("/");
+                
             }
 
         }
