@@ -1,6 +1,7 @@
 # Directory
 
 ##Setup
+Directory requires Zend Framework 1.x (Tested with 1.12.3)
 Ensure that Zend Framework 1.x is available on the PHP path. In the php.ini config file:
 ```
 include_path = "/path/to/Zend/library"
