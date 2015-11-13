@@ -1,3 +1,4 @@
+/*Users with special priviledges.. they get to see more attributes in directory*/
 {
     "users": [
         "fgorham",
