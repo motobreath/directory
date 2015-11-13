@@ -1,4 +1,4 @@
-# directory
+# Directory
 
 ##Setup
 Ensure that Zend Framework 1.x is available on the PHP path. In the php.ini config file:
